@@ -18,6 +18,7 @@
   },
   "plugins": ["import", "react", "@typescript-eslint"],
   "rules": {
+    "react/react-in-jsx-scope": "off",
     "react/jsx-max-depth": [
       2,
       {
