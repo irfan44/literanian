@@ -1,8 +1,10 @@
+import { Container } from "@chakra-ui/react";
+
 const Home = () => {
   return (
-    <div>
+    <Container maxW="6xl">
       <h1>Home</h1>
-    </div>
+    </Container>
   );
 };
 

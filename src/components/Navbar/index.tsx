@@ -1,6 +1,6 @@
 import {
-  Box,
   Button,
+  Container,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
@@ -25,7 +25,7 @@ const Navbar = () => {
 
   return (
     <>
-      <Box>
+      <Container maxW="6xl" py="4">
         <Flex alignItems={"center"}>
           <Text>Logo</Text>
           <Spacer />
@@ -38,7 +38,7 @@ const Navbar = () => {
             <IconButton ref={btnRef} aria-label="Open menu" onClick={onOpen} />
           </Show>
         </Flex>
-      </Box>
+      </Container>
       <Drawer
         isOpen={isOpen}
         placement="top"
