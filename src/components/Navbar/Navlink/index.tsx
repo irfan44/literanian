@@ -8,16 +8,12 @@ const Navlink = () => {
       to: "/",
     },
     {
-      name: "Beranda",
-      to: "/",
+      name: "Kategori",
+      to: "/category",
     },
     {
-      name: "Beranda",
-      to: "/",
-    },
-    {
-      name: "Beranda",
-      to: "/",
+      name: "Tentang Kami",
+      to: "/about-us",
     },
   ];
 
