@@ -1,11 +1,11 @@
-import { Button, Container, Heading } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+import HeroSection from "components/pages/home/HeroSection";
 
 const Home = () => {
   return (
-    <Container maxW="6xl">
-      <Heading>Hello</Heading>
-      <Button>Mulai membaca</Button>
-    </Container>
+    <Box minH="100vh">
+      <HeroSection />
+    </Box>
   );
 };
 
