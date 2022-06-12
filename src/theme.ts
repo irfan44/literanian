@@ -10,6 +10,15 @@ const Button = {
       py: "1",
     },
   },
+  variants: {
+    solid: {
+      bg: "black",
+      color: "white",
+      _hover: {
+        bg: "blackAlpha.800",
+      },
+    },
+  },
 };
 
 const theme = extendTheme({
@@ -19,6 +28,13 @@ const theme = extendTheme({
   },
   components: {
     Button,
+  },
+  styles: {
+    global: {
+      body: {
+        color: "black",
+      },
+    },
   },
 });
 
