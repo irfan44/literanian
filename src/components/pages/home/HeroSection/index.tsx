@@ -32,7 +32,7 @@ const HeroSection = () => {
           Baca artikel dan kerjakan kuis untuk kumpulkan poin. Penuhi target dan
           dapatkan akses untuk artikel premium
         </Text>
-        <Button>Mulai Eksplorasi</Button>
+        <Button>Eksplorasi sekarang!</Button>
         <Flex mt="12">
           <Stat>
             <StatNumber>100+</StatNumber>
