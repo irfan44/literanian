@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Button,
   Container,
   Drawer,
@@ -11,17 +12,44 @@ import {
   Flex,
   Hide,
   IconButton,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
   Show,
   Spacer,
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
+import { useAppSelector } from "redux/hooks";
 import Navlink from "./Navlink";
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef<HTMLButtonElement>(null);
+
+  const { displayName, photoURL, uid } = useAppSelector((state) => state.user);
+
+  const profileButton = () => {
+    return (
+      <Menu>
+        <MenuButton>
+          <Flex alignItems="center">
+            <Avatar
+              name={displayName ? displayName : "Default"}
+              size="sm"
+              src={photoURL !== null ? photoURL : ""}
+            />
+            <Text fontSize="sm">{displayName}</Text>
+          </Flex>
+        </MenuButton>
+        <MenuList>
+          <MenuItem>Hello</MenuItem>
+        </MenuList>
+      </Menu>
+    );
+  };
 
   return (
     <>
@@ -32,7 +60,7 @@ const Navbar = () => {
           <Hide below="sm">
             <Navlink />
             <Spacer />
-            <Button>Login</Button>
+            {uid ? profileButton() : <Button>Login</Button>}
           </Hide>
           <Show below="sm">
             <IconButton ref={btnRef} aria-label="Open menu" onClick={onOpen} />
