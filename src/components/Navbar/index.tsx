@@ -29,7 +29,10 @@ const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = React.useRef<HTMLButtonElement>(null);
 
-  const { displayName, photoURL, uid } = useAppSelector((state) => state.user);
+  const { displayName, photoURL, uid } = useAppSelector(
+    (state) => state.userProfile
+  );
+  const { points } = useAppSelector((state) => state.userStatus);
 
   const profileButton = () => {
     return (
@@ -42,6 +45,7 @@ const Navbar = () => {
               src={photoURL !== null ? photoURL : ""}
             />
             <Text fontSize="sm">{displayName}</Text>
+            <Text>{points}</Text>
           </Flex>
         </MenuButton>
         <MenuList>
