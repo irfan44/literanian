@@ -21,12 +21,18 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
+import LoginModal from "components/LoginModal";
 import React from "react";
 import { useAppSelector } from "redux/hooks";
 import Navlink from "./Navlink";
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isOpenLoginModal,
+    onOpen: onOpenLoginModal,
+    onClose: onCloseLoginModal,
+  } = useDisclosure();
   const btnRef = React.useRef<HTMLButtonElement>(null);
 
   const { displayName, photoURL, uid } = useAppSelector(
@@ -64,7 +70,11 @@ const Navbar = () => {
           <Hide below="sm">
             <Navlink />
             <Spacer />
-            {uid ? profileButton() : <Button>Login</Button>}
+            {uid ? (
+              profileButton()
+            ) : (
+              <Button onClick={onOpenLoginModal}>Login</Button>
+            )}
           </Hide>
           <Show below="sm">
             <IconButton ref={btnRef} aria-label="Open menu" onClick={onOpen} />
@@ -85,11 +95,14 @@ const Navbar = () => {
           </DrawerHeader>
           <DrawerBody>
             <Navlink />
-            <Button mt={4}>Login</Button>
+            <Button onClick={onOpenLoginModal} mt="4">
+              Login
+            </Button>
           </DrawerBody>
           <DrawerFooter />
         </DrawerContent>
       </Drawer>
+      <LoginModal isOpen={isOpenLoginModal} onClose={onCloseLoginModal} />
     </>
   );
 };
