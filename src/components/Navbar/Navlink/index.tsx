@@ -7,6 +7,7 @@ const Navlink = () => {
       name: "Beranda",
       to: "/",
     },
+    { name: "Eksplorasi", to: "/explore" },
     {
       name: "Kategori",
       to: "/category",
