@@ -21,6 +21,7 @@ const CategorySection = () => {
         </GridItem>
         <GridItem>
           <Text>Hello</Text>
+          <Text>Hello2</Text>
         </GridItem>
       </Grid>
     </Container>

@@ -8,7 +8,9 @@ const Home = () => {
     <Box minH="100vh">
       <HeroSection />
       <RecommendedArticleSection />
-      <CategorySection />
+      <Box bg="#38B2AC">
+        <CategorySection />
+      </Box>
     </Box>
   );
 };
