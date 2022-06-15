@@ -16,30 +16,13 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["import", "react", "@typescript-eslint"],
+  "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/jsx-max-depth": [
       2,
       {
         "max": 4
-      }
-    ],
-    "import/order": [
-      "warn",
-      {
-        "alphabetize": {
-          "caseInsensitive": true,
-          "order": "asc"
-        },
-        "groups": [
-          "builtin",
-          "external",
-          "index",
-          "sibling",
-          "parent",
-          "internal"
-        ]
       }
     ]
   }

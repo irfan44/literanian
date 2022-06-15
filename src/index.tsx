@@ -1,18 +1,28 @@
 import { ChakraProvider } from "@chakra-ui/react";
+import "@fontsource/inter/variable.css";
+import "@fontsource/source-sans-pro/700.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { BrowserRouter } from "react-router-dom";
+import theme from "theme";
+import { Provider } from "react-redux";
+import store from "redux/store";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <ChakraProvider>
-      <App />
-    </ChakraProvider>
+    <BrowserRouter>
+      <Provider store={store}>
+        <ChakraProvider theme={theme}>
+          <App />
+        </ChakraProvider>
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
