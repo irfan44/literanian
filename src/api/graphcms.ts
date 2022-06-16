@@ -6,11 +6,16 @@ const fetchArticleByCategory = async (category: string) => {
   const data = await request(
     contentAPI,
     `{
-        articles(where: {kategori: "${category}"}) {
-            judul
-            slug
-            ringkasan
-            kategori
+        articles(where: {category: "${category}"}) {
+          title
+          slug
+          coverImage {
+            url
+          }
+          category
+          articleType
+          excerpt
+          createdAt
         }
     }`
   );
@@ -23,11 +28,19 @@ const fetchArticleBySlug = async (slug: string) => {
     contentAPI,
     `{
         article(where: {slug: "${slug}"}) {
-            judul
-            kategori
-            isi {
-                html
+            title
+            slug
+            coverImage {
+              url
             }
+            category
+            articleType
+            excerpt
+            content {
+              html
+            }
+            createdAt
+            updatedAt
         }
     }`
   );
@@ -35,4 +48,51 @@ const fetchArticleBySlug = async (slug: string) => {
   return data.article;
 };
 
-export { fetchArticleByCategory, fetchArticleBySlug };
+const fetchPremiumArticle = async () => {
+  const data = await request(
+    contentAPI,
+    `{
+        articles(where: {articleType: "premium"}) {
+          title
+          slug
+          coverImage {
+            url
+          }
+          category
+          articleType
+          excerpt
+          createdAt
+        }
+    }`
+  );
+
+  return data.articles;
+};
+
+const fetchLatestArticle = async () => {
+  const data = await request(
+    contentAPI,
+    `{
+        articles(orderBy: createdAt_DESC) {
+          title
+          slug
+          coverImage {
+            url
+          }
+          category
+          articleType
+          excerpt
+          createdAt
+        }
+    }`
+  );
+
+  return data.articles;
+};
+
+export {
+  fetchArticleByCategory,
+  fetchArticleBySlug,
+  fetchPremiumArticle,
+  fetchLatestArticle,
+};
