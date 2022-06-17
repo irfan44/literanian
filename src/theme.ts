@@ -1,4 +1,4 @@
-import { extendTheme } from "@chakra-ui/react";
+import { extendTheme, withDefaultColorScheme } from "@chakra-ui/react";
 
 const Button = {
   baseStyle: {
@@ -10,32 +10,35 @@ const Button = {
       py: "1",
     },
   },
-  variants: {
-    solid: {
-      bg: "black",
-      color: "white",
-      _hover: {
-        bg: "blackAlpha.800",
-      },
+};
+
+const Link = {
+  baseStyle: {
+    _focus: {
+      boxShadow: "none",
     },
   },
 };
 
-const theme = extendTheme({
-  fonts: {
-    body: `'InterVariable', system-ui, sans-serif`,
-    heading: `'Source Sans Pro', system-ui, sans-serif`,
-  },
-  components: {
-    Button,
-  },
-  styles: {
-    global: {
-      body: {
-        color: "black",
+const theme = extendTheme(
+  {
+    fonts: {
+      body: `'InterVariable', system-ui, sans-serif`,
+      heading: `'Source Sans Pro', system-ui, sans-serif`,
+    },
+    components: {
+      Button,
+      Link,
+    },
+    styles: {
+      global: {
+        body: {
+          color: "black",
+        },
       },
     },
   },
-});
+  withDefaultColorScheme({ colorScheme: "blue" })
+);
 
 export default theme;
