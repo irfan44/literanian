@@ -1,9 +1,10 @@
 import { Box } from "@chakra-ui/react";
+import UserDashboard from "components/pages/explore/UserDashboard";
 
 const Explore = () => {
   return (
     <Box minH="100vh">
-      <h1>Explore</h1>
+      <UserDashboard />
     </Box>
   );
 };
