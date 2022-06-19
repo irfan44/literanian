@@ -15,7 +15,6 @@ const PremiumArticleList = (props: Props) => {
 
   const isPremium = uid && premium;
   const isNotPremium = uid && !premium;
-  const isNotLoggedIn = !uid;
 
   return (
     <Container maxW="6xl" py="8">
@@ -28,7 +27,6 @@ const PremiumArticleList = (props: Props) => {
         </SimpleGrid>
       )}
       {isNotPremium && <Text>Akun kamu bukan akun premium</Text>}
-      {isNotLoggedIn && <Text>Akun kamu belum login</Text>}
     </Container>
   );
 };

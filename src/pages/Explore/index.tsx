@@ -4,11 +4,17 @@ import ArticleLists from "components/pages/explore/ArticleList";
 import PremiumArticleList from "components/pages/explore/PremiumArticleList";
 import UserDashboard from "components/pages/explore/UserDashboard";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "redux/hooks";
 import { ArticleData } from "types/article";
 
 const Explore = () => {
   const [latestArticles, setLatestArticles] = useState<ArticleData[]>([]);
   const [premiumArticles, setPremiumArticles] = useState<ArticleData[]>([]);
+
+  const { uid } = useAppSelector((state) => state.userProfile);
+
+  const navigate = useNavigate();
 
   const getLatestArticle = async () => {
     const articles = await fetchLatestArticles();
@@ -23,6 +29,9 @@ const Explore = () => {
   useEffect(() => {
     getLatestArticle();
     getPremiumArticle();
+    if (!uid) {
+      navigate("/login");
+    }
   }, []);
 
   return (
