@@ -10,6 +10,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
+import { useAppSelector } from "redux/hooks";
 import { ArticleData } from "types/article";
 
 const ArticleCard = ({
@@ -20,6 +21,7 @@ const ArticleCard = ({
   excerpt,
 }: ArticleData) => {
   const { url } = coverImage;
+  const { uid } = useAppSelector((state) => state.userProfile);
 
   return (
     <VStack
@@ -33,7 +35,7 @@ const ArticleCard = ({
         <Badge>{category}</Badge>
       </Flex>
       <Heading size="lg">
-        <LinkOverlay as={RouterLink} to={`/article/${slug}`}>
+        <LinkOverlay as={RouterLink} to={uid ? `/article/${slug}` : "/login"}>
           {title}
         </LinkOverlay>
       </Heading>

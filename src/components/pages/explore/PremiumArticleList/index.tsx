@@ -1,4 +1,11 @@
-import { Container, Heading, SimpleGrid, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Container,
+  Heading,
+  SimpleGrid,
+  Text,
+} from "@chakra-ui/react";
 import ArticleCard from "components/ArticleCard";
 import { useAppSelector } from "redux/hooks";
 import { ArticleData } from "types/article";
@@ -26,7 +33,14 @@ const PremiumArticleList = (props: Props) => {
           ))}
         </SimpleGrid>
       )}
-      {isNotPremium && <Text>Akun kamu bukan akun premium</Text>}
+      {isNotPremium && (
+        <Box as={Center} py="6" bg="blue.100" borderRadius="2xl">
+          <Text>
+            Akun mu bukan akun premium. Dapatkan poin untuk buka akses ke
+            artikel premium
+          </Text>
+        </Box>
+      )}
     </Container>
   );
 };
