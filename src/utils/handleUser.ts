@@ -16,4 +16,30 @@ const handleAddPoint = async (
   return newPoints;
 };
 
-export { handleAddPoint };
+const handleAddPremium = async (
+  uid: string,
+  premiumExpiry: string,
+  premiumDuration: number
+) => {
+  if (premiumExpiry === "") {
+    const currentDate = new Date();
+    currentDate.setDate(currentDate.getDate() + premiumDuration);
+    const newExpiry = currentDate.toISOString();
+    await updateDoc(doc(db, "userStatus", uid), {
+      premiumExpiry: newExpiry,
+      premium: true,
+    });
+    return newExpiry;
+  } else {
+    const currentDate = new Date(premiumExpiry);
+    currentDate.setDate(currentDate.getDate() + premiumDuration);
+    const newExpiry = currentDate.toISOString();
+    await updateDoc(doc(db, "userStatus", uid), {
+      premiumExpiry: newExpiry,
+      premium: true,
+    });
+    return newExpiry;
+  }
+};
+
+export { handleAddPoint, handleAddPremium };
