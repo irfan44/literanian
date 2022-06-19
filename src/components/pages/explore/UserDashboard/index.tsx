@@ -14,12 +14,15 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { useAppSelector } from "redux/hooks";
+import formatDate from "utils/formatDate";
 
 const UserDashboard = () => {
   const { displayName } = useAppSelector((state) => state.userProfile);
   const { premium, premiumExpiry, points } = useAppSelector(
     (state) => state.userStatus
   );
+
+  const expireDate = premiumExpiry && formatDate(premiumExpiry);
 
   return (
     <Flex
@@ -61,7 +64,7 @@ const UserDashboard = () => {
             ) : (
               <StatNumber fontSize="lg">Akun Reguler</StatNumber>
             )}
-            <StatHelpText>Sampai {premium ? premiumExpiry : "-"}</StatHelpText>
+            <StatHelpText>Sampai {premium ? expireDate : "-"}</StatHelpText>
           </Stat>
         </Stack>
       </Box>
