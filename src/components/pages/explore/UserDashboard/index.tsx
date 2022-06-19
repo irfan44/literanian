@@ -1,12 +1,10 @@
 import {
   Box,
   Button,
-  Center,
   Container,
   Flex,
   Heading,
   HStack,
-  Image,
   Input,
   Stack,
   Stat,
@@ -32,16 +30,18 @@ const UserDashboard = () => {
       direction={{ base: "column", md: "column", lg: "row" }}
       alignItems="center"
       maxW="6xl"
-      py="16"
+      py="8"
     >
       <Box
         w={{ base: "100%", md: "100%", lg: "50%" }}
         pr={{ base: "0", md: "0", lg: "6" }}
-        pb={{ base: "16", md: "16", lg: "0" }}
+        py="16"
       >
         {uid ? (
           <>
-            <Heading>Halo</Heading>
+            <Text fontWeight="medium" fontSize="lg">
+              Halo, selamat datang!
+            </Text>
             <Heading mb="6">{displayName}</Heading>
             <form>
               <HStack mb="6">
@@ -86,21 +86,12 @@ const UserDashboard = () => {
           </>
         ) : (
           <>
-            <Heading>Selamat datang di ...</Heading>
+            <Heading>Halo, selamat datang!</Heading>
             <Text mb="6">Masuk menggunakan akun dan mulai kumpulkan poin</Text>
             <Button onClick={onOpen}>Masuk ke akun</Button>
             <LoginModal isOpen={isOpen} onClose={onClose} />
           </>
         )}
-      </Box>
-      <Box
-        w={{ base: "100%", md: "100%", lg: "50%" }}
-        pr={{ base: "0", md: "0", lg: "6" }}
-        pb={{ base: "16", md: "16", lg: "0" }}
-      >
-        <Center>
-          <Image src="/images/hello.svg" />
-        </Center>
       </Box>
     </Flex>
   );
