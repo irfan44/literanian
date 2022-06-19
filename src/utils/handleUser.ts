@@ -42,4 +42,19 @@ const handleAddPremium = async (
   }
 };
 
-export { handleAddPoint, handleAddPremium };
+const checkPremium = async (uid: string, premiumExpiry: string) => {
+  const currentDate = new Date();
+  const premiumExpiryDate = new Date(premiumExpiry);
+
+  if (currentDate > premiumExpiryDate) {
+    await updateDoc(doc(db, "userStatus", uid), {
+      premium: false,
+      premiumExpiry: "",
+    });
+    return false;
+  } else {
+    return true;
+  }
+};
+
+export { handleAddPoint, handleAddPremium, checkPremium };

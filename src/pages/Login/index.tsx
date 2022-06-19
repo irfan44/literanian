@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "redux/hooks";
 import { setUserProfile } from "redux/reducer/userProfileReducer";
 import { setUserStatus } from "redux/reducer/userStatusReducer";
+import { checkPremium } from "utils/handleUser";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -40,7 +41,18 @@ const Login = () => {
         premiumExpiry: status.premiumExpiry,
         points: status.points,
       };
-      dispatch(setUserStatus(userStatus));
+      const premiumStatus = await checkPremium(uid, status.premiumExpiry);
+      if (premiumStatus) {
+        dispatch(setUserStatus(userStatus));
+      } else {
+        dispatch(
+          setUserStatus({
+            premium: false,
+            premiumExpiry: "",
+            points: status.points,
+          })
+        );
+      }
     } else {
       await addDefaultUserStatus(uid);
     }
