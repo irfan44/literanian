@@ -9,20 +9,41 @@ import {
   Stack,
   Stat,
   StatHelpText,
-  StatLabel,
   StatNumber,
   Text,
 } from "@chakra-ui/react";
-import { useAppSelector } from "redux/hooks";
+import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "redux/hooks";
+import { setNewPremium } from "redux/reducer/userStatusReducer";
 import formatDate from "utils/formatDate";
+import { checkPoints, handleAddPremium } from "utils/handleUser";
 
 const UserDashboard = () => {
-  const { displayName } = useAppSelector((state) => state.userProfile);
+  const { uid, displayName } = useAppSelector((state) => state.userProfile);
   const { premium, premiumExpiry, points } = useAppSelector(
     (state) => state.userStatus
   );
+  const [isClaimable, setIsClaimable] = useState(false);
+  const dispatch = useAppDispatch();
 
   const expireDate = premiumExpiry && formatDate(premiumExpiry);
+
+  const checkingPoints = () => {
+    const check = points !== null && checkPoints(points);
+    setIsClaimable(check);
+  };
+
+  const handleClaimPremium = async () => {
+    if (uid !== null && premiumExpiry !== null) {
+      const newExpiry = await handleAddPremium(uid, premiumExpiry, 5);
+      dispatch(setNewPremium({ premium: true, premiumExpiry: newExpiry }));
+      setIsClaimable(false);
+    }
+  };
+
+  useEffect(() => {
+    checkingPoints();
+  }, []);
 
   return (
     <Flex
@@ -53,12 +74,10 @@ const UserDashboard = () => {
         </form>
         <Stack direction={["column", "row"]}>
           <Stat bg="blue.600" color="white" py="2" px="4" borderRadius="2xl">
-            <StatLabel>Total Poin</StatLabel>
             <StatNumber fontSize="lg">{points}</StatNumber>
-            <StatHelpText>Target: 100</StatHelpText>
+            <StatHelpText>Total Poin</StatHelpText>
           </Stat>
           <Stat bg="blue.600" color="white" py="2" px="4" borderRadius="2xl">
-            <StatLabel>Jenis Akun</StatLabel>
             {premium ? (
               <StatNumber fontSize="lg">Akun Premium</StatNumber>
             ) : (
@@ -67,6 +86,13 @@ const UserDashboard = () => {
             <StatHelpText>Sampai {premium ? expireDate : "-"}</StatHelpText>
           </Stat>
         </Stack>
+        {isClaimable ? (
+          <Button mt="6" onClick={handleClaimPremium}>
+            Klaim
+          </Button>
+        ) : (
+          ""
+        )}
       </Box>
     </Flex>
   );

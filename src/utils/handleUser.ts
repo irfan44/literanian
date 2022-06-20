@@ -2,6 +2,7 @@
 // menambah poin user dan update ke firestore
 
 import { db } from "api/firebase";
+import targetPoints from "data/targetPoints";
 import { doc, updateDoc } from "firebase/firestore";
 
 const handleAddPoint = async (
@@ -57,4 +58,13 @@ const checkPremium = async (uid: string, premiumExpiry: string) => {
   }
 };
 
-export { handleAddPoint, handleAddPremium, checkPremium };
+const checkPoints = (currentPoint: number) => {
+  const check = targetPoints.includes(currentPoint);
+  if (check) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+export { handleAddPoint, handleAddPremium, checkPremium, checkPoints };
