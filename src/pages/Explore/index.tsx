@@ -36,9 +36,7 @@ const Explore = () => {
 
   return (
     <Box minH="100vh">
-      <Box bg="blue.100">
-        <UserDashboard />
-      </Box>
+      <UserDashboard />
       <ArticleLists title="Artikel Terbaru" articleData={latestArticles} />
       <PremiumArticleList
         title="Artikel Premium"
