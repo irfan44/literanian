@@ -14,9 +14,13 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
-import { setNewPremium } from "redux/reducer/userStatusReducer";
+import { setNewPoints, setNewPremium } from "redux/reducer/userStatusReducer";
 import formatDate from "utils/formatDate";
-import { checkPoints, handleAddPremium } from "utils/handleUser";
+import {
+  checkPoints,
+  handleAddPoint,
+  handleAddPremium,
+} from "utils/handleUser";
 
 const UserDashboard = () => {
   const { uid, displayName } = useAppSelector((state) => state.userProfile);
@@ -34,9 +38,11 @@ const UserDashboard = () => {
   };
 
   const handleClaimPremium = async () => {
-    if (uid !== null && premiumExpiry !== null) {
+    if (uid !== null && premiumExpiry !== null && points !== null) {
       const newExpiry = await handleAddPremium(uid, premiumExpiry, 5);
+      const newPoints = await handleAddPoint(uid, points, 5);
       dispatch(setNewPremium({ premium: true, premiumExpiry: newExpiry }));
+      dispatch(setNewPoints(newPoints));
       setIsClaimable(false);
     }
   };
