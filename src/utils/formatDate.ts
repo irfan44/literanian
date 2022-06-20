@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 
 const formatDate = (date: string) => {
-  const formattedDate = dayjs(date).format("DD MMMM YYYY");
+  const formattedDate = dayjs(date).format("MMM DD, YYYY");
   return formattedDate;
 };
 
