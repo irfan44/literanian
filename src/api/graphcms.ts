@@ -1,30 +1,10 @@
 import request from "graphql-request";
+import { Article, Articles } from "types/article";
 
 const contentAPI = process.env.REACT_APP_GRAPHCMS_CONTENT_API || "";
 
-const fetchArticleByCategory = async (category: string) => {
-  const data = await request(
-    contentAPI,
-    `{
-        articles(where: {category: "${category}"}) {
-          title
-          slug
-          coverImage {
-            url
-          }
-          category
-          articleType
-          excerpt
-          createdAt
-        }
-    }`
-  );
-
-  return data.articles;
-};
-
 const fetchArticleBySlug = async (slug: string) => {
-  const data = await request(
+  const data = await request<Article>(
     contentAPI,
     `{
         article(where: {slug: "${slug}"}) {
@@ -37,7 +17,7 @@ const fetchArticleBySlug = async (slug: string) => {
             articleType
             excerpt
             content {
-              html
+              markdown
             }
             createdAt
             updatedAt
@@ -48,11 +28,11 @@ const fetchArticleBySlug = async (slug: string) => {
   return data.article;
 };
 
-const fetchPremiumArticle = async () => {
-  const data = await request(
+const fetchArticlesByCategory = async (category: string) => {
+  const data = await request<Articles>(
     contentAPI,
     `{
-        articles(where: {articleType: "premium"}) {
+        articles(where: {category: "${category}"}) {
           title
           slug
           coverImage {
@@ -62,6 +42,7 @@ const fetchPremiumArticle = async () => {
           articleType
           excerpt
           createdAt
+          updatedAt
         }
     }`
   );
@@ -69,8 +50,8 @@ const fetchPremiumArticle = async () => {
   return data.articles;
 };
 
-const fetchLatestArticle = async () => {
-  const data = await request(
+const fetchLatestArticles = async () => {
+  const data = await request<Articles>(
     contentAPI,
     `{
         articles(orderBy: createdAt_DESC) {
@@ -83,6 +64,29 @@ const fetchLatestArticle = async () => {
           articleType
           excerpt
           createdAt
+          updatedAt
+        }
+    }`
+  );
+
+  return data.articles;
+};
+
+const fetchPremiumArticles = async () => {
+  const data = await request<Articles>(
+    contentAPI,
+    `{
+        articles(where: {articleType: "premium"}) {
+          title
+          slug
+          coverImage {
+            url
+          }
+          category
+          articleType
+          excerpt
+          createdAt
+          updatedAt
         }
     }`
   );
@@ -91,8 +95,8 @@ const fetchLatestArticle = async () => {
 };
 
 export {
-  fetchArticleByCategory,
   fetchArticleBySlug,
-  fetchPremiumArticle,
-  fetchLatestArticle,
+  fetchArticlesByCategory,
+  fetchLatestArticles,
+  fetchPremiumArticles,
 };

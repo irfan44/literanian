@@ -21,24 +21,24 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import LoginModal from "components/LoginModal";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "redux/hooks";
 import Navlink from "./Navlink";
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const {
-    isOpen: isOpenLoginModal,
-    onOpen: onOpenLoginModal,
-    onClose: onCloseLoginModal,
-  } = useDisclosure();
   const btnRef = React.useRef<HTMLButtonElement>(null);
 
   const { displayName, photoURL, uid } = useAppSelector(
     (state) => state.userProfile
   );
   const { points } = useAppSelector((state) => state.userStatus);
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate("/login");
+  };
 
   const profileButton = () => {
     return (
@@ -73,7 +73,7 @@ const Navbar = () => {
             {uid ? (
               profileButton()
             ) : (
-              <Button onClick={onOpenLoginModal}>Login</Button>
+              <Button onClick={handleLogin}>Login</Button>
             )}
           </Hide>
           <Show below="sm">
@@ -95,14 +95,13 @@ const Navbar = () => {
           </DrawerHeader>
           <DrawerBody>
             <Navlink />
-            <Button onClick={onOpenLoginModal} mt="4">
+            <Button onClick={handleLogin} mt="4">
               Login
             </Button>
           </DrawerBody>
           <DrawerFooter />
         </DrawerContent>
       </Drawer>
-      <LoginModal isOpen={isOpenLoginModal} onClose={onCloseLoginModal} />
     </>
   );
 };

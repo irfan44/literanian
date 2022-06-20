@@ -1,15 +1,4 @@
-import {
-  Button,
-  Heading,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Text,
-} from "@chakra-ui/react";
+import { Button, Heading, Text, useToast } from "@chakra-ui/react";
 import { auth, db } from "api/firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
@@ -18,16 +7,12 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "redux/hooks";
 import { setUserProfile } from "redux/reducer/userProfileReducer";
 import { setUserStatus } from "redux/reducer/userStatusReducer";
+import { checkPremium } from "utils/handleUser";
 
-const LoginModal = ({
-  isOpen,
-  onClose,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-}) => {
+const Login = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const toast = useToast();
 
   const dispatch = useAppDispatch();
   const provider = new GoogleAuthProvider();
@@ -56,7 +41,18 @@ const LoginModal = ({
         premiumExpiry: status.premiumExpiry,
         points: status.points,
       };
-      dispatch(setUserStatus(userStatus));
+      const premiumStatus = await checkPremium(uid, status.premiumExpiry);
+      if (premiumStatus) {
+        dispatch(setUserStatus(userStatus));
+      } else {
+        dispatch(
+          setUserStatus({
+            premium: false,
+            premiumExpiry: "",
+            points: status.points,
+          })
+        );
+      }
     } else {
       await addDefaultUserStatus(uid);
     }
@@ -72,34 +68,23 @@ const LoginModal = ({
       })
       .catch((error) => {
         console.log(error);
+        toast({ title: error.message, status: "error" });
       })
       .finally(() => {
         setLoading(false);
         navigate("/explore");
-        onClose();
       });
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>Masuk ke akun</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <Heading>Masuk</Heading>
-          <Text>Masuk dengan google guys</Text>
-          <Button isLoading={loading} onClick={handleLogin}>
-            Masuk dengan Google
-          </Button>
-        </ModalBody>
-
-        <ModalFooter>
-          <Button onClick={onClose}>Close</Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+    <>
+      <Heading>Masuk</Heading>
+      <Text>Masuk dengan google guys</Text>
+      <Button isLoading={loading} onClick={handleLogin}>
+        Masuk dengan Google
+      </Button>
+    </>
   );
 };
 
-export default LoginModal;
+export default Login;

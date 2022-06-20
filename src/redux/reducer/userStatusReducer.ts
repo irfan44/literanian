@@ -18,8 +18,16 @@ const userStatusReducer = createSlice({
       state.premiumExpiry = null;
       state.points = null;
     },
+    setNewPoints: (state, action) => {
+      state.points = action.payload;
+    },
+    setNewPremium: (state, action) => {
+      state.premium = action.payload.premium;
+      state.premiumExpiry = action.payload.premiumExpiry;
+    },
   },
 });
 
-export const { setUserStatus, clearUserStatus } = userStatusReducer.actions;
+export const { setUserStatus, clearUserStatus, setNewPoints, setNewPremium } =
+  userStatusReducer.actions;
 export default userStatusReducer.reducer;
