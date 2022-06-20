@@ -63,7 +63,9 @@ const UserDashboard = () => {
         <Text fontWeight="medium" fontSize="lg">
           Halo, Selamat datang!
         </Text>
-        <Heading mb="6">{displayName}</Heading>
+        <Heading as="h1" size="3xl" mb="6">
+          {displayName}
+        </Heading>
         <Stack direction={["column", "row"]}>
           <Stat bg="#D6E6F5" py="2" px="4" borderRadius="2xl">
             <StatNumber fontSize="lg">{points}</StatNumber>
@@ -80,7 +82,7 @@ const UserDashboard = () => {
         </Stack>
         {isClaimable ? (
           <Button mt="6" onClick={handleClaimPremium}>
-            Klaim
+            Klaim premium!
           </Button>
         ) : (
           ""

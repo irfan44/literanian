@@ -1,10 +1,10 @@
 import {
+  Badge,
   Heading,
   HStack,
   Image,
   LinkBox,
   LinkOverlay,
-  Spacer,
   Text,
   VStack,
 } from "@chakra-ui/react";
@@ -27,28 +27,19 @@ const ArticleCard = ({
   const date = formatDate(createdAt);
 
   return (
-    <VStack
-      as={LinkBox}
-      p="4"
-      borderWidth="1px"
-      borderRadius="2xl"
-      alignItems="start"
-    >
-      <HStack>
-        <Text fontSize="sm" fontWeight="medium">
-          {category}
-        </Text>
-        <Text fontSize="sm">|</Text>
-        <Text fontSize="sm">{date}</Text>
-      </HStack>
-      <Heading size="lg">
+    <VStack as={LinkBox} alignItems="start">
+      <Image src={url} borderRadius="2xl" />
+      <Heading as="h3" size="lg">
         <LinkOverlay as={RouterLink} to={uid ? `/article/${slug}` : "/login"}>
           {title}
         </LinkOverlay>
       </Heading>
+      <HStack>
+        <Badge bg="#D6E6F5">{category}</Badge>
+        <Text fontSize="sm">|</Text>
+        <Text fontSize="sm">{date}</Text>
+      </HStack>
       <Text noOfLines={3}>{excerpt}</Text>
-      <Spacer />
-      <Image src={url} borderRadius="2xl" />
     </VStack>
   );
 };
