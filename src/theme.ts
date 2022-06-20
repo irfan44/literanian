@@ -2,7 +2,7 @@ import { extendTheme, withDefaultColorScheme } from "@chakra-ui/react";
 
 const Button = {
   baseStyle: {
-    borderRadius: "full",
+    borderRadius: "2xl",
   },
   sizes: {
     md: {

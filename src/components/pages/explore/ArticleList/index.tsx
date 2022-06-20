@@ -12,7 +12,7 @@ const ArticleLists = (props: Props) => {
   return (
     <Container maxW="6xl" py="8">
       <Heading mb="6">{props.title}</Heading>
-      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing="6">
+      <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing="6">
         {articleData.map((article) => (
           <ArticleCard key={article.slug} {...article} />
         ))}

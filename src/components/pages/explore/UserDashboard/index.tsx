@@ -1,11 +1,11 @@
 import {
   Box,
   Button,
+  Center,
   Container,
   Flex,
   Heading,
-  HStack,
-  Input,
+  Image,
   Stack,
   Stat,
   StatHelpText,
@@ -59,31 +59,19 @@ const UserDashboard = () => {
       maxW="6xl"
       py="8"
     >
-      <Box
-        w={{ base: "100%", md: "100%", lg: "50%" }}
-        pr={{ base: "0", md: "0", lg: "6" }}
-        py="16"
-      >
+      <Box w={{ base: "100%", md: "100%", lg: "50%" }}>
         <Text fontWeight="medium" fontSize="lg">
-          Halo, selamat datang!
+          Halo, Selamat datang!
         </Text>
-        <Heading mb="6">{displayName}</Heading>
-        <form>
-          <HStack mb="6">
-            <Input
-              variant="filled"
-              placeholder="Cari artikel"
-              borderRadius="full"
-            />
-            <Button>Cari</Button>
-          </HStack>
-        </form>
+        <Heading as="h1" size="3xl" mb="6">
+          {displayName}
+        </Heading>
         <Stack direction={["column", "row"]}>
-          <Stat bg="blue.600" color="white" py="2" px="4" borderRadius="2xl">
+          <Stat bg="#D6E6F5" py="2" px="4" borderRadius="2xl">
             <StatNumber fontSize="lg">{points}</StatNumber>
             <StatHelpText>Total Poin</StatHelpText>
           </Stat>
-          <Stat bg="blue.600" color="white" py="2" px="4" borderRadius="2xl">
+          <Stat bg="#D6E6F5" py="2" px="4" borderRadius="2xl">
             {premium ? (
               <StatNumber fontSize="lg">Akun Premium</StatNumber>
             ) : (
@@ -94,11 +82,19 @@ const UserDashboard = () => {
         </Stack>
         {isClaimable ? (
           <Button mt="6" onClick={handleClaimPremium}>
-            Klaim
+            Klaim premium!
           </Button>
         ) : (
           ""
         )}
+      </Box>
+      <Box
+        w={{ base: "100%", md: "100%", lg: "50%" }}
+        pr={{ base: "0", md: "0", lg: "6" }}
+      >
+        <Center>
+          <Image src="images/hello.svg" />
+        </Center>
       </Box>
     </Flex>
   );

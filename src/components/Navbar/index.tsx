@@ -1,5 +1,7 @@
+import { ChevronDownIcon, HamburgerIcon } from "@chakra-ui/icons";
 import {
   Avatar,
+  Box,
   Button,
   Container,
   Drawer,
@@ -11,6 +13,7 @@ import {
   DrawerOverlay,
   Flex,
   Hide,
+  HStack,
   IconButton,
   Menu,
   MenuButton,
@@ -33,7 +36,6 @@ const Navbar = () => {
   const { displayName, photoURL, uid } = useAppSelector(
     (state) => state.userProfile
   );
-  const { points } = useAppSelector((state) => state.userStatus);
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -43,16 +45,15 @@ const Navbar = () => {
   const profileButton = () => {
     return (
       <Menu>
-        <MenuButton>
-          <Flex alignItems="center">
+        <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+          <HStack>
             <Avatar
               name={displayName ? displayName : "Default"}
-              size="sm"
+              size="xs"
               src={photoURL !== null ? photoURL : ""}
             />
-            <Text fontSize="sm">{displayName}</Text>
-            <Text>{points}</Text>
-          </Flex>
+            <Text>Profil</Text>
+          </HStack>
         </MenuButton>
         <MenuList>
           <MenuItem>Hello</MenuItem>
@@ -73,11 +74,16 @@ const Navbar = () => {
             {uid ? (
               profileButton()
             ) : (
-              <Button onClick={handleLogin}>Login</Button>
+              <Button onClick={handleLogin}>Masuk</Button>
             )}
           </Hide>
           <Show below="sm">
-            <IconButton ref={btnRef} aria-label="Open menu" onClick={onOpen} />
+            <IconButton
+              icon={<HamburgerIcon />}
+              ref={btnRef}
+              aria-label="Open menu"
+              onClick={onOpen}
+            />
           </Show>
         </Flex>
       </Container>
@@ -95,9 +101,13 @@ const Navbar = () => {
           </DrawerHeader>
           <DrawerBody>
             <Navlink />
-            <Button onClick={handleLogin} mt="4">
-              Login
-            </Button>
+            <Box mt="4">
+              {uid ? (
+                profileButton()
+              ) : (
+                <Button onClick={handleLogin}>Masuk</Button>
+              )}
+            </Box>
           </DrawerBody>
           <DrawerFooter />
         </DrawerContent>
