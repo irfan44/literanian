@@ -1,7 +1,6 @@
 import {
-  Badge,
-  Flex,
   Heading,
+  HStack,
   Image,
   LinkBox,
   LinkOverlay,
@@ -12,16 +11,20 @@ import {
 import { Link as RouterLink } from "react-router-dom";
 import { useAppSelector } from "redux/hooks";
 import { ArticleData } from "types/article";
+import formatDate from "utils/formatDate";
 
 const ArticleCard = ({
   title,
   slug,
   coverImage,
   category,
+  createdAt,
   excerpt,
 }: ArticleData) => {
   const { url } = coverImage;
   const { uid } = useAppSelector((state) => state.userProfile);
+
+  const date = formatDate(createdAt);
 
   return (
     <VStack
@@ -31,9 +34,13 @@ const ArticleCard = ({
       borderRadius="2xl"
       alignItems="start"
     >
-      <Flex>
-        <Badge>{category}</Badge>
-      </Flex>
+      <HStack>
+        <Text fontSize="sm" fontWeight="medium">
+          {category}
+        </Text>
+        <Text fontSize="sm">|</Text>
+        <Text fontSize="sm">{date}</Text>
+      </HStack>
       <Heading size="lg">
         <LinkOverlay as={RouterLink} to={uid ? `/article/${slug}` : "/login"}>
           {title}
