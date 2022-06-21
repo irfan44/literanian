@@ -5,7 +5,7 @@ import RecommendedArticleSection from "components/pages/home/RecommendedArticleS
 
 const Home = () => {
   return (
-    <Box minH="100vh">
+    <Box minH="100vh" bg="#f6f8fd">
       <HeroSection />
       <RecommendedArticleSection />
       <CategorySection />

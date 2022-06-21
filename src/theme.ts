@@ -30,13 +30,6 @@ const theme = extendTheme(
       Button,
       Link,
     },
-    styles: {
-      global: {
-        body: {
-          color: "black",
-        },
-      },
-    },
   },
   withDefaultColorScheme({ colorScheme: "blue" })
 );

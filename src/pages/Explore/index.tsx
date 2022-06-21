@@ -35,7 +35,7 @@ const Explore = () => {
   }, []);
 
   return (
-    <Box minH="100vh">
+    <Box minH="100vh" bg="#f6f8fd" pb="16">
       <UserDashboard />
       <ArticleLists title="Artikel Terbaru" articleData={latestArticles} />
       <PremiumArticleList
