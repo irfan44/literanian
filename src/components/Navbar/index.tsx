@@ -1,5 +1,7 @@
+import { ChevronDownIcon, HamburgerIcon } from "@chakra-ui/icons";
 import {
   Avatar,
+  Box,
   Button,
   Container,
   Drawer,
@@ -11,6 +13,7 @@ import {
   DrawerOverlay,
   Flex,
   Hide,
+  HStack,
   IconButton,
   Menu,
   MenuButton,
@@ -21,38 +24,36 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import LoginModal from "components/LoginModal";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "redux/hooks";
 import Navlink from "./Navlink";
 
 const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const {
-    isOpen: isOpenLoginModal,
-    onOpen: onOpenLoginModal,
-    onClose: onCloseLoginModal,
-  } = useDisclosure();
   const btnRef = React.useRef<HTMLButtonElement>(null);
 
   const { displayName, photoURL, uid } = useAppSelector(
     (state) => state.userProfile
   );
-  const { points } = useAppSelector((state) => state.userStatus);
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate("/login");
+  };
 
   const profileButton = () => {
     return (
       <Menu>
-        <MenuButton>
-          <Flex alignItems="center">
+        <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+          <HStack>
             <Avatar
               name={displayName ? displayName : "Default"}
-              size="sm"
+              size="xs"
               src={photoURL !== null ? photoURL : ""}
             />
-            <Text fontSize="sm">{displayName}</Text>
-            <Text>{points}</Text>
-          </Flex>
+            <Text>Profil</Text>
+          </HStack>
         </MenuButton>
         <MenuList>
           <MenuItem>Hello</MenuItem>
@@ -73,11 +74,16 @@ const Navbar = () => {
             {uid ? (
               profileButton()
             ) : (
-              <Button onClick={onOpenLoginModal}>Login</Button>
+              <Button onClick={handleLogin} bgColor={"#2447F9"}>Masuk</Button>
             )}
           </Hide>
           <Show below="sm">
-            <IconButton ref={btnRef} aria-label="Open menu" onClick={onOpen} />
+            <IconButton
+              icon={<HamburgerIcon />}
+              ref={btnRef}
+              aria-label="Open menu"
+              onClick={onOpen}
+            />
           </Show>
         </Flex>
       </Container>
@@ -95,14 +101,17 @@ const Navbar = () => {
           </DrawerHeader>
           <DrawerBody>
             <Navlink />
-            <Button onClick={onOpenLoginModal} mt="4">
-              Login
-            </Button>
+            <Box mt="4">
+              {uid ? (
+                profileButton()
+              ) : (
+                <Button onClick={handleLogin} bgColor={"#2447F9"}>Masuk</Button>
+              )}
+            </Box>
           </DrawerBody>
           <DrawerFooter />
         </DrawerContent>
       </Drawer>
-      <LoginModal isOpen={isOpenLoginModal} onClose={onCloseLoginModal} />
     </>
   );
 };

@@ -9,12 +9,15 @@ import {
   StatHelpText,
   StatNumber,
   Text,
-  useDisclosure,
 } from "@chakra-ui/react";
-import LoginModal from "components/LoginModal";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    navigate("/login");
+  };
   return (
     <Flex
       as={Container}
@@ -28,14 +31,15 @@ const HeroSection = () => {
         pr={{ base: "0", md: "0", lg: "6" }}
         pb={{ base: "16", md: "16", lg: "0" }}
       >
-        <Heading as="h1" size="2xl" mb="6">
+        <Heading as="h1" size="2xl" mb="6" letterSpacing={0.5}>
           Explorasi berbagai artikel menarik di (nama brand)
         </Heading>
         <Text fontSize="md" mb="6">
           Baca artikel dan kerjakan kuis untuk kumpulkan poin. Penuhi target dan
           dapatkan akses untuk artikel premium
         </Text>
-        <Button size="lg" onClick={onOpen}>
+
+        <Button size="lg" onClick={handleLogin} bgColor={"#2447F9"}>
           Eksplorasi sekarang!
         </Button>
         <Flex mt="12">
@@ -56,7 +60,6 @@ const HeroSection = () => {
       <Box w={{ base: "100%", md: "100%", lg: "50%" }}>
         <Image src="/images/hero.png" borderRadius="xl" />
       </Box>
-      <LoginModal isOpen={isOpen} onClose={onClose} />
     </Flex>
   );
 };
