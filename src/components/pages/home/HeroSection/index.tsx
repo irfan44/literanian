@@ -31,14 +31,15 @@ const HeroSection = () => {
         pr={{ base: "0", md: "0", lg: "6" }}
         pb={{ base: "16", md: "16", lg: "0" }}
       >
-        <Heading as="h1" size="2xl" mb="6">
+        <Heading as="h1" size="2xl" mb="6" letterSpacing={0.5}>
           Explorasi berbagai artikel menarik di (nama brand)
         </Heading>
         <Text fontSize="md" mb="6">
           Baca artikel dan kerjakan kuis untuk kumpulkan poin. Penuhi target dan
           dapatkan akses untuk artikel premium
         </Text>
-        <Button size="lg" onClick={handleLogin}>
+
+        <Button size="lg" onClick={handleLogin} bgColor={"#2447F9"}>
           Eksplorasi sekarang!
         </Button>
         <Flex mt="12">
