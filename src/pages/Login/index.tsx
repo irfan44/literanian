@@ -1,4 +1,14 @@
-import { Button, Heading, Text, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Container,
+  Heading,
+  useToast,
+  Image,
+  Flex,
+  Center,
+  Text,
+} from "@chakra-ui/react";
 import { auth, db } from "api/firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
@@ -77,13 +87,28 @@ const Login = () => {
   };
 
   return (
-    <>
-      <Heading>Masuk</Heading>
-      <Text>Masuk dengan google guys</Text>
-      <Button isLoading={loading} onClick={handleLogin}>
-        Masuk dengan Google
-      </Button>
-    </>
+    <Box as={Center} minH="100vh" bg="#f6f8fd">
+      <Container
+        as={Flex}
+        maxW="6xl"
+        alignItems="center"
+        direction={{ base: "column", md: "column", lg: "row" }}
+      >
+        <Box
+          w={{ base: "100%", md: "100%", lg: "50%" }}
+          pb={{ base: "16", md: "16", lg: "0" }}
+        >
+          <Image src="images/login.svg" />
+        </Box>
+        <Box w={{ base: "100%", md: "100%", lg: "50%" }}>
+          <Heading>Masuk</Heading>
+          <Text mb="10">Halo, Selamat datang!</Text>
+          <Button isLoading={loading} onClick={handleLogin} bgColor={"#2447F9"}>
+            Masuk dengan Google
+          </Button>
+        </Box>
+      </Container>
+    </Box>
   );
 };
 
