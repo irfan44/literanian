@@ -45,7 +45,11 @@ const Navbar = () => {
   const profileButton = () => {
     return (
       <Menu>
-        <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+        <MenuButton
+          as={Button}
+          rightIcon={<ChevronDownIcon />}
+          colorScheme="gray"
+        >
           <HStack>
             <Avatar
               name={displayName ? displayName : "Default"}
@@ -63,7 +67,7 @@ const Navbar = () => {
   };
 
   return (
-    <>
+    <Box bg="#f6f8fd">
       <Container maxW="6xl" py="4">
         <Flex alignItems={"center"}>
           <Text>Logo</Text>
@@ -74,7 +78,9 @@ const Navbar = () => {
             {uid ? (
               profileButton()
             ) : (
-              <Button onClick={handleLogin}>Masuk</Button>
+              <Button onClick={handleLogin} bgColor={"#2447F9"}>
+                Masuk
+              </Button>
             )}
           </Hide>
           <Show below="sm">
@@ -83,6 +89,7 @@ const Navbar = () => {
               ref={btnRef}
               aria-label="Open menu"
               onClick={onOpen}
+              bgColor={"#2447F9"}
             />
           </Show>
         </Flex>
@@ -105,14 +112,16 @@ const Navbar = () => {
               {uid ? (
                 profileButton()
               ) : (
-                <Button onClick={handleLogin}>Masuk</Button>
+                <Button onClick={handleLogin} bgColor={"#2447F9"}>
+                  Masuk
+                </Button>
               )}
             </Box>
           </DrawerBody>
           <DrawerFooter />
         </DrawerContent>
       </Drawer>
-    </>
+    </Box>
   );
 };
 

@@ -28,6 +28,7 @@ const UserDashboard = () => {
     (state) => state.userStatus
   );
   const [isClaimable, setIsClaimable] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useAppDispatch();
 
   const expireDate = premiumExpiry && formatDate(premiumExpiry);
@@ -38,12 +39,14 @@ const UserDashboard = () => {
   };
 
   const handleClaimPremium = async () => {
+    setIsLoading(true);
     if (uid !== null && premiumExpiry !== null && points !== null) {
       const newExpiry = await handleAddPremium(uid, premiumExpiry, 5);
       const newPoints = await handleAddPoint(uid, points, 5);
       dispatch(setNewPremium({ premium: true, premiumExpiry: newExpiry }));
       dispatch(setNewPoints(newPoints));
       setIsClaimable(false);
+      setIsLoading(false);
     }
   };
 
@@ -67,11 +70,11 @@ const UserDashboard = () => {
           {displayName}
         </Heading>
         <Stack direction={["column", "row"]}>
-          <Stat bg="#D6E6F5" py="2" px="4" borderRadius="2xl">
+          <Stat bg="white" py="2" px="4" borderRadius="2xl">
             <StatNumber fontSize="lg">{points}</StatNumber>
             <StatHelpText>Total Poin</StatHelpText>
           </Stat>
-          <Stat bg="#D6E6F5" py="2" px="4" borderRadius="2xl">
+          <Stat bg="white" py="2" px="4" borderRadius="2xl">
             {premium ? (
               <StatNumber fontSize="lg">Akun Premium</StatNumber>
             ) : (
@@ -81,9 +84,18 @@ const UserDashboard = () => {
           </Stat>
         </Stack>
         {isClaimable ? (
-          <Button mt="6" onClick={handleClaimPremium}>
-            Klaim premium!
-          </Button>
+          <Stack mt="6">
+            <Text fontWeight="bold">
+              Selamat, kamu berhasil membuka akun premium!
+            </Text>
+            <Button
+              isLoading={isLoading}
+              onClick={handleClaimPremium}
+              bgColor={"#2447F9"}
+            >
+              Klaim premium!
+            </Button>
+          </Stack>
         ) : (
           ""
         )}

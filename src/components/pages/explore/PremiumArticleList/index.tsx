@@ -25,16 +25,19 @@ const PremiumArticleList = (props: Props) => {
 
   return (
     <Container maxW="6xl" py="8">
+      <Text fontSize="sm" color="blackAlpha.700">
+        Khusus untuk akun premium
+      </Text>
       <Heading mb="6">{props.title}</Heading>
       {isPremium && (
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing="6">
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing="6">
           {articleData.map((article) => (
             <ArticleCard key={article.slug} {...article} />
           ))}
         </SimpleGrid>
       )}
       {isNotPremium && (
-        <Box as={Center} py="6" bg="#D6E6F5" borderRadius="2xl">
+        <Box as={Center} py="6" bg="#2447F9" color="white" borderRadius="2xl">
           <Text>
             Dapatkan lebih banyak poin untuk buka akses ke artikel premium
           </Text>

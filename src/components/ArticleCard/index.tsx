@@ -27,7 +27,17 @@ const ArticleCard = ({
   const date = formatDate(createdAt);
 
   return (
-    <VStack as={LinkBox} alignItems="start">
+    <VStack
+      as={LinkBox}
+      alignItems="start"
+      bg="white"
+      p="6"
+      borderRadius="2xl"
+      boxShadow="sm"
+      _hover={{
+        boxShadow: "base",
+      }}
+    >
       <Image src={url} borderRadius="2xl" />
       <Heading as="h3" size="lg">
         <LinkOverlay as={RouterLink} to={uid ? `/article/${slug}` : "/login"}>
