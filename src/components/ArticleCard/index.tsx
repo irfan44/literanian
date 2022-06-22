@@ -49,8 +49,10 @@ const ArticleCard = ({
         <Text fontSize="sm">|</Text>
         <Text fontSize="sm">{date}</Text>
       </HStack>
-      <Text fontFamily={'Poppins'} fontWeight={400} color={'gray.600'} fontSize={'16px'} noOfLines={3}>{excerpt}</Text>
-    </VStack >
+      <Text fontWeight={400} color={"gray.600"} fontSize={"16px"} noOfLines={3}>
+        {excerpt}
+      </Text>
+    </VStack>
   );
 };
 
