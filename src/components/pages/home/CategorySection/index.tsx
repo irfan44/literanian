@@ -12,15 +12,15 @@ const CategorySection = () => {
   return (
     <Container maxW="6xl" py="16">
       <VStack as={Center}>
-        <Heading>Kategori</Heading>
+        <Heading>Kategori Premium</Heading>
         <Text>Kategori artikel yang dapat kamu pilih</Text>
       </VStack>
       <Grid templateColumns="repeat(5, 1fr)" mt="16">
         <GridItem>
-          <Text>Hello</Text>
+          <Text></Text>
         </GridItem>
         <GridItem>
-          <Text>Hello</Text>
+          <Text></Text>
         </GridItem>
       </Grid>
     </Container>

@@ -1,13 +1,12 @@
 import {
+  Box,
   Button,
+  Container,
   Heading,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
+  useToast,
+  Image,
+  Flex,
+  Center,
   Text,
 } from "@chakra-ui/react";
 import { auth, db } from "api/firebase";
@@ -18,16 +17,12 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "redux/hooks";
 import { setUserProfile } from "redux/reducer/userProfileReducer";
 import { setUserStatus } from "redux/reducer/userStatusReducer";
+import { checkPremium } from "utils/handleUser";
 
-const LoginModal = ({
-  isOpen,
-  onClose,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-}) => {
+const Login = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const toast = useToast();
 
   const dispatch = useAppDispatch();
   const provider = new GoogleAuthProvider();
@@ -56,7 +51,18 @@ const LoginModal = ({
         premiumExpiry: status.premiumExpiry,
         points: status.points,
       };
-      dispatch(setUserStatus(userStatus));
+      const premiumStatus = await checkPremium(uid, status.premiumExpiry);
+      if (premiumStatus) {
+        dispatch(setUserStatus(userStatus));
+      } else {
+        dispatch(
+          setUserStatus({
+            premium: false,
+            premiumExpiry: "",
+            points: status.points,
+          })
+        );
+      }
     } else {
       await addDefaultUserStatus(uid);
     }
@@ -72,34 +78,38 @@ const LoginModal = ({
       })
       .catch((error) => {
         console.log(error);
+        toast({ title: error.message, status: "error" });
       })
       .finally(() => {
         setLoading(false);
         navigate("/explore");
-        onClose();
       });
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>Masuk ke akun</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
+    <Box as={Center} minH="100vh" bg="#f6f8fd">
+      <Container
+        as={Flex}
+        maxW="6xl"
+        alignItems="center"
+        direction={{ base: "column", md: "column", lg: "row" }}
+      >
+        <Box
+          w={{ base: "100%", md: "100%", lg: "50%" }}
+          pb={{ base: "16", md: "16", lg: "0" }}
+        >
+          <Image src="images/login.svg" />
+        </Box>
+        <Box w={{ base: "100%", md: "100%", lg: "50%" }}>
           <Heading>Masuk</Heading>
-          <Text>Masuk dengan google guys</Text>
-          <Button isLoading={loading} onClick={handleLogin}>
+          <Text mb="10">Halo, Selamat datang!</Text>
+          <Button isLoading={loading} onClick={handleLogin} bgColor={"#2447F9"}>
             Masuk dengan Google
           </Button>
-        </ModalBody>
-
-        <ModalFooter>
-          <Button onClick={onClose}>Close</Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+        </Box>
+      </Container>
+    </Box>
   );
 };
 
-export default LoginModal;
+export default Login;
