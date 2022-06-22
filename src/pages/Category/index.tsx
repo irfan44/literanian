@@ -8,8 +8,14 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import CategoryCard from "components/CategoryCard";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAppSelector } from "redux/hooks";
 
 const Category = () => {
+  const { uid } = useAppSelector((state) => state.userProfile);
+  const navigate = useNavigate();
+
   const categoryList = [
     {
       id: 1,
@@ -33,6 +39,12 @@ const Category = () => {
       subtitle: "Membaca artikel tentang Kesehatan",
     },
   ];
+
+  useEffect(() => {
+    if (!uid) {
+      navigate("/login");
+    }
+  }, []);
 
   return (
     <Box minH="100vh" bg="#f6f8fd" pb="16">
