@@ -1,8 +1,7 @@
 import {
     Center,
     Container,
-    Grid,
-    GridItem,
+    Image,
     Heading,
     Text,
     VStack,
@@ -14,16 +13,11 @@ const BoostProductivitySection = () => {
             <VStack as={Center}>
                 <Heading marginBottom={-2}>Metode Membaca Lebih</Heading>
                 <Heading>Santai dan Terarah</Heading>
-                <Text>Kategori artikel yang dapat kamu pilih</Text>
+                <Text marginBottom={10}>Boost Productivity</Text>
             </VStack>
-            <Grid templateColumns="repeat(5, 1fr)" mt="16">
-                <GridItem>
-                    <Text>Hello</Text>
-                </GridItem>
-                <GridItem>
-                    <Text>Hello</Text>
-                </GridItem>
-            </Grid>
+            <Center>
+                <Image boxSize={"85%"} src="/images/boost.png" paddingTop={"6%"} />
+            </Center>
         </Container>
     );
 };

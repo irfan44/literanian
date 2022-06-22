@@ -24,7 +24,9 @@ const HeroSection = () => {
       direction={{ base: "column", md: "column", lg: "row" }}
       alignItems="center"
       maxW="6xl"
-      py="16"
+      pt="7%"
+      pb="5%"
+
     >
       <Box
         w={{ base: "100%", md: "100%", lg: "50%" }}
@@ -32,9 +34,9 @@ const HeroSection = () => {
         pb={{ base: "16", md: "16", lg: "0" }}
       >
         <Heading as="h1" size="2xl" mb="6" letterSpacing={0.5}>
-          Explorasi berbagai artikel menarik di (nama brand)
+          Explorasi Berbagai Artikel Menarik Di (nama brand)
         </Heading>
-        <Text fontSize="md" mb="6">
+        <Text fontFamily={'Poppins'} fontWeight={400} fontSize="md" mb="6">
           Baca artikel dan kerjakan kuis untuk kumpulkan poin. Penuhi target dan
           dapatkan akses untuk artikel premium
         </Text>
@@ -57,7 +59,7 @@ const HeroSection = () => {
           </Stat>
         </Flex>
       </Box>
-      <Box w={{ base: "100%", md: "100%", lg: "50%" }}>
+      <Box w={{ base: "100%", md: "100%", lg: "60%" }}>
         <Image src="/images/hero.png" borderRadius="xl" />
       </Box>
     </Flex>
