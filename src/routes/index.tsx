@@ -1,3 +1,4 @@
+import Category from "pages/Category";
 import Explore from "pages/Explore";
 import Home from "pages/Home";
 import Login from "pages/Login";
@@ -9,6 +10,7 @@ const AppRouter = () => {
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/explore" element={<Explore />} />
+      <Route path="/category" element={<Category />} />
     </Routes>
   );
 };
