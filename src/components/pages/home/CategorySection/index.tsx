@@ -17,10 +17,10 @@ const CategorySection = () => {
       </VStack>
       <Grid templateColumns="repeat(5, 1fr)" mt="16">
         <GridItem>
-          <Text>Hello</Text>
+          <Text></Text>
         </GridItem>
         <GridItem>
-          <Text>Hello</Text>
+          <Text></Text>
         </GridItem>
       </Grid>
     </Container>
