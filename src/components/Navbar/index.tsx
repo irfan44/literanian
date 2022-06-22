@@ -72,12 +72,10 @@ const Navbar = () => {
         maxW="7xl"
         py="4"
         pt="6"
-        fontFamily={'Poppins'}
         fontWeight={600}
-        color={'gray.700'}
+        color={"gray.700"}
         letterSpacing={0.9}
       >
-
         <Flex alignItems={"center"}>
           <Text>Logo</Text>
           <Spacer />
@@ -130,7 +128,7 @@ const Navbar = () => {
           <DrawerFooter />
         </DrawerContent>
       </Drawer>
-    </Box >
+    </Box>
   );
 };
 
