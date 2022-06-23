@@ -76,7 +76,14 @@ const ContentArticle = () => {
               <Text fontSize="sm">|</Text>
               <Text fontSize="sm">{date}</Text>
             </HStack>
-            <Image src={article.coverImage.url} borderRadius="2xl" />
+            <Image
+              src={article.coverImage.url}
+              borderRadius="2xl"
+              alt={article.title}
+              width="100%"
+              height={{ base: "300px", md: "500px" }}
+              objectFit="cover"
+            />
             <Prose>
               <RichText content={article.content.raw} />
             </Prose>

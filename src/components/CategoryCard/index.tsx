@@ -30,7 +30,14 @@ const CategoryCard = ({ title, slug, image, subtitle }: Props) => {
         boxShadow: "base",
       }}
     >
-      <Image src={image} />
+      <Image
+        src={image}
+        alt={title}
+        width="100%"
+        height="200px"
+        objectFit="cover"
+        borderRadius="2xl"
+      />
       <Heading as="h3" size="lg">
         <LinkOverlay as={RouterLink} to={`/category/${slug}`}>
           {title}

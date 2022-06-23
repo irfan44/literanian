@@ -22,14 +22,14 @@ const Category = () => {
       title: "Pendidikan",
       slug: "pendidikan",
       image: "https://picsum.photos/id/1/200/300",
-      subtitle: "Membaca artikel tentang pendidikan",
+      subtitle: "Membaca artikel tentang Pendidikan",
     },
     {
       id: 2,
       title: "Teknologi",
       slug: "teknologi",
       image: "https://picsum.photos/id/1/200/300",
-      subtitle: "Membaca artikel tentang teknologi",
+      subtitle: "Membaca artikel tentang Teknologi",
     },
     {
       id: 3,
@@ -37,6 +37,20 @@ const Category = () => {
       slug: "kesehatan",
       image: "https://picsum.photos/id/1/200/300",
       subtitle: "Membaca artikel tentang Kesehatan",
+    },
+    {
+      id: 4,
+      title: "Sastra",
+      slug: "sastra",
+      image: "https://picsum.photos/id/1/200/300",
+      subtitle: "Membaca artikel tentang Sastra",
+    },
+    {
+      id: 5,
+      title: "Pariwisata",
+      slug: "pariwisata",
+      image: "https://picsum.photos/id/1/200/300",
+      subtitle: "Membaca artikel tentang Pariwisata",
     },
   ];
 

@@ -89,7 +89,7 @@ const Login = () => {
   };
 
   return (
-    <Box as={Center} minH="100vh" bg="#f6f8fd">
+    <Box as={Center} minH="100vh" bg="#f6f8fd" py="16">
       <Container
         as={Flex}
         maxW="6xl"
