@@ -4,7 +4,7 @@ import Explore from "pages/Explore";
 import Home from "pages/Home";
 import Login from "pages/Login";
 import { Route, Routes } from "react-router-dom";
-import ArticleContent from "pages/ArticleContent";
+import ArticleContent from "pages/ContentArticle";
 
 const AppRouter = () => {
   return (
