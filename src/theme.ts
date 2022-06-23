@@ -1,4 +1,5 @@
 import { extendTheme, withDefaultColorScheme } from "@chakra-ui/react";
+import { withProse } from "@nikolovlazar/chakra-ui-prose";
 
 const Button = {
   baseStyle: {
@@ -31,7 +32,8 @@ const theme = extendTheme(
       Link,
     },
   },
-  withDefaultColorScheme({ colorScheme: "blue" })
+  withDefaultColorScheme({ colorScheme: "blue" }),
+  withProse()
 );
 
 export default theme;

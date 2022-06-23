@@ -17,7 +17,7 @@ const fetchArticleBySlug = async (slug: string) => {
             articleType
             excerpt
             content {
-              markdown
+              raw
             }
             createdAt
             updatedAt

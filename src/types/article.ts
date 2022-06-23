@@ -1,3 +1,5 @@
+import { RichTextContent } from "@graphcms/rich-text-types";
+
 export interface ArticleData {
   title: string;
   slug: string;
@@ -12,9 +14,7 @@ export interface ArticleData {
 }
 
 export interface ArticleContent extends ArticleData {
-  content: {
-    markdown: string;
-  };
+  content: { raw: RichTextContent };
 }
 
 export interface Article {
