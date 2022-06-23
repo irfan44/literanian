@@ -38,7 +38,14 @@ const ArticleCard = ({
         boxShadow: "base",
       }}
     >
-      <Image src={url} borderRadius="2xl" />
+      <Image
+        src={url}
+        borderRadius="2xl"
+        alt={title}
+        width="100%"
+        height="200px"
+        objectFit="cover"
+      />
       <Heading as="h3" size="lg">
         <LinkOverlay as={RouterLink} to={uid ? `/article/${slug}` : "/login"}>
           {title}
