@@ -1,4 +1,15 @@
-import { Badge, Box, Container, Heading, HStack, Image, Text } from "@chakra-ui/react";
+import {
+  Badge,
+  Box,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  Container,
+  Heading,
+  HStack,
+  Image,
+  Text,
+} from "@chakra-ui/react";
 import { fetchArticleBySlug } from "api/graphcms";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
@@ -6,6 +17,7 @@ import { ArticleContent } from "types/article";
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import { Prose } from "@nikolovlazar/chakra-ui-prose";
 import formatDate from "utils/formatDate";
+import { Link } from "react-router-dom";
 
 const ContentArticle = () => {
   const [article, setArticle] = useState<ArticleContent>();
@@ -33,6 +45,25 @@ const ContentArticle = () => {
       <Container maxW="4xl">
         {article && (
           <>
+            <Breadcrumb fontSize="sm" mb="2">
+              <BreadcrumbItem>
+                <BreadcrumbLink as={Link} to="/explore">
+                  Explorasi
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbItem>
+                <BreadcrumbLink
+                  as={Link}
+                  to={`/category/${article.category}`}
+                  textTransform="capitalize"
+                >
+                  {article.category}
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbItem isCurrentPage>
+                <BreadcrumbLink>{article.title}</BreadcrumbLink>
+              </BreadcrumbItem>
+            </Breadcrumb>
             <Heading mb="4">{article.title}</Heading>
             <HStack mb="6">
               <Badge bg="#D6E6F5">{article.category}</Badge>

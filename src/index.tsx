@@ -1,6 +1,4 @@
 import { ChakraProvider } from "@chakra-ui/react";
-import "@fontsource/inter/variable.css";
-import "@fontsource/source-sans-pro/700.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
