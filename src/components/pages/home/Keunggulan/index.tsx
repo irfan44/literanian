@@ -309,7 +309,7 @@ const KeunggulanSection = () => {
                     </Box>
                     <Stack pt={5} align={"left"}>
                         <Text color={"gray.700"} fontSize={"2xl"} fontWeight={900}>
-                            Konsultasi
+                            Points
                         </Text>
                         <Heading
                             color={"gray.600"}
