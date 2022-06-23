@@ -24,7 +24,7 @@ const HeroSection = () => {
       direction={{ base: "column", md: "column", lg: "row" }}
       alignItems="center"
       maxW="6xl"
-      pt="7%"
+      pt="8%"
       pb="5%"
 
     >
@@ -36,7 +36,7 @@ const HeroSection = () => {
         <Heading as="h1" size="2xl" mb="6" letterSpacing={0.5}>
           Explorasi Berbagai Artikel Menarik Di (nama brand)
         </Heading>
-        <Text fontFamily={'Poppins'} fontWeight={400} fontSize="md" mb="6">
+        <Text fontWeight={400} fontSize="md" mb="6">
           Baca artikel dan kerjakan kuis untuk kumpulkan poin. Penuhi target dan
           dapatkan akses untuk artikel premium
         </Text>
