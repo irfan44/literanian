@@ -17,11 +17,14 @@ import { ArticleContent } from "types/article";
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import { Prose } from "@nikolovlazar/chakra-ui-prose";
 import formatDate from "utils/formatDate";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAppSelector } from "redux/hooks";
 
 const ContentArticle = () => {
   const [article, setArticle] = useState<ArticleContent>();
+  const { uid } = useAppSelector((state) => state.userProfile);
   const { slug } = useParams();
+  const navigate = useNavigate();
 
   const getArticleContent = async () => {
     if (slug) {
@@ -38,6 +41,9 @@ const ContentArticle = () => {
 
   useEffect(() => {
     getArticleContent();
+    if (!uid) {
+      navigate("/login");
+    }
   }, []);
 
   return (
