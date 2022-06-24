@@ -79,11 +79,13 @@ const ContentArticle = () => {
               <Badge bg="#D6E6F5">{article.category}</Badge>
               <Text fontSize="sm">|</Text>
               <Text fontSize="sm">{date}</Text>
-              <Text fontSize="sm">|</Text>
               {articlePremium && (
-                <Badge mb="2" variant="solid" colorScheme="yellow">
-                  Premium
-                </Badge>
+                <>
+                  <Text fontSize="sm">|</Text>
+                  <Badge mb="2" variant="solid" colorScheme="yellow">
+                    Premium
+                  </Badge>
+                </>
               )}
             </HStack>
             <Image
