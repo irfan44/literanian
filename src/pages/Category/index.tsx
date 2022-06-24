@@ -63,6 +63,7 @@ const Category = () => {
     if (!uid) {
       navigate("/login");
     }
+    window.scrollTo(0, 0);
   }, []);
 
   return (
