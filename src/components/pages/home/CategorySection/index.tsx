@@ -20,7 +20,7 @@ const CategorySection = () => {
         <Heading>Kategori</Heading>
         <Text>Kategori artikel yang dapat kamu pilih</Text>
       </VStack>
-      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing="8" mt={6}>
+      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing="6" mt={6}>
         {categories.map((category) => {
           return <CategoryCard key={category.id} {...category} />;
         })}

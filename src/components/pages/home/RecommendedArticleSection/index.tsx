@@ -33,7 +33,7 @@ const RecommendedArticleSection = () => {
         <Heading>Artikel Rekomendasi</Heading>
         <Text>Beberapa artikel populer yang kami rekomendasikan</Text>
       </VStack>
-      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing="8" mt={6}>
+      <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing="6" mt={6}>
         {articles.map((article) => {
           return <ArticleCard key={article.slug} {...article} />;
         })}
