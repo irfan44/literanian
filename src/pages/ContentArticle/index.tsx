@@ -4,6 +4,7 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
+  Center,
   Container,
   Heading,
   HStack,
@@ -23,6 +24,7 @@ import { useAppSelector } from "redux/hooks";
 const ContentArticle = () => {
   const [article, setArticle] = useState<ArticleContent>();
   const { uid } = useAppSelector((state) => state.userProfile);
+  const { premium } = useAppSelector((state) => state.userStatus);
   const { slug } = useParams();
   const navigate = useNavigate();
 
@@ -38,12 +40,14 @@ const ContentArticle = () => {
   };
 
   const date = article && formatDate(article.createdAt);
+  const articlePremium = article && article.articleType === "premium";
 
   useEffect(() => {
     getArticleContent();
     if (!uid) {
       navigate("/login");
     }
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -75,11 +79,49 @@ const ContentArticle = () => {
               <Badge bg="#D6E6F5">{article.category}</Badge>
               <Text fontSize="sm">|</Text>
               <Text fontSize="sm">{date}</Text>
+              {articlePremium && (
+                <>
+                  <Text fontSize="sm">|</Text>
+                  <Badge mb="2" variant="solid" colorScheme="yellow">
+                    Premium
+                  </Badge>
+                </>
+              )}
             </HStack>
-            <Image src={article.coverImage.url} borderRadius="2xl" />
-            <Prose>
-              <RichText content={article.content.raw} />
-            </Prose>
+            <Image
+              src={article.coverImage.url}
+              borderRadius="2xl"
+              alt={article.title}
+              width="100%"
+              height={{ base: "300px", md: "500px" }}
+              objectFit="cover"
+            />
+            {articlePremium ? (
+              premium ? (
+                <Prose>
+                  <RichText content={article.content.raw} />
+                </Prose>
+              ) : (
+                <Box
+                  as={Center}
+                  py="16"
+                  px="5"
+                  bg="#2447F9"
+                  color="white"
+                  borderRadius="2xl"
+                  mt="16"
+                >
+                  <Text>
+                    Dapatkan lebih banyak poin untuk buka akses ke artikel
+                    premium
+                  </Text>
+                </Box>
+              )
+            ) : (
+              <Prose>
+                <RichText content={article.content.raw} />
+              </Prose>
+            )}
           </>
         )}
       </Container>

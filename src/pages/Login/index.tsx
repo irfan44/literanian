@@ -1,3 +1,4 @@
+import { ChevronLeftIcon } from "@chakra-ui/icons";
 import {
   Box,
   Button,
@@ -8,12 +9,13 @@ import {
   Flex,
   Center,
   Text,
+  Link,
 } from "@chakra-ui/react";
 import { auth, db } from "api/firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "redux/hooks";
 import { setUserProfile } from "redux/reducer/userProfileReducer";
 import { setUserStatus } from "redux/reducer/userStatusReducer";
@@ -87,7 +89,7 @@ const Login = () => {
   };
 
   return (
-    <Box as={Center} minH="100vh" bg="#f6f8fd">
+    <Box as={Center} minH="100vh" bg="#f6f8fd" py="16">
       <Container
         as={Flex}
         maxW="6xl"
@@ -103,9 +105,20 @@ const Login = () => {
         <Box w={{ base: "100%", md: "100%", lg: "50%" }}>
           <Heading>Masuk</Heading>
           <Text mb="10">Halo, Selamat datang!</Text>
-          <Button isLoading={loading} onClick={handleLogin} bgColor={"#2447F9"}>
+          <Button
+            isLoading={loading}
+            onClick={handleLogin}
+            bgColor={"#2447F9"}
+            mb="6"
+          >
             Masuk dengan Google
           </Button>
+          <Flex alignItems="center">
+            <ChevronLeftIcon />
+            <Link as={RouterLink} to="/" display="block">
+              Kembali ke beranda
+            </Link>
+          </Flex>
         </Box>
       </Container>
     </Box>
