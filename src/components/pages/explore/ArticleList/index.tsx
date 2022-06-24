@@ -4,6 +4,7 @@ import { ArticleData } from "types/article";
 
 interface Props {
   title: string;
+  subtitle: string;
   articleData: ArticleData[];
 }
 
@@ -12,7 +13,7 @@ const ArticleLists = (props: Props) => {
   return (
     <Container maxW="6xl" py="8">
       <Text fontSize="sm" color="blackAlpha.700">
-        Terbaru dari kami
+        {props.subtitle}
       </Text>
       <Heading mb="6">{props.title}</Heading>
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing="6">
