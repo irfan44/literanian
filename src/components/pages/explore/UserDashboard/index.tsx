@@ -18,7 +18,7 @@ import { setNewPoints, setNewPremium } from "redux/reducer/userStatusReducer";
 import formatDate from "utils/formatDate";
 import {
   checkPoints,
-  handleAddPoint,
+  handleAddPoints,
   handleAddPremium,
 } from "utils/handleUser";
 
@@ -42,7 +42,7 @@ const UserDashboard = () => {
     setIsLoading(true);
     if (uid !== null && premiumExpiry !== null && points !== null) {
       const newExpiry = await handleAddPremium(uid, premiumExpiry, 5);
-      const newPoints = await handleAddPoint(uid, points, 5);
+      const newPoints = await handleAddPoints(uid, points, 5);
       dispatch(setNewPremium({ premium: true, premiumExpiry: newExpiry }));
       dispatch(setNewPoints(newPoints));
       setIsClaimable(false);
