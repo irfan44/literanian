@@ -1,4 +1,11 @@
-import { Box, Button, Heading, HStack, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Heading,
+  SimpleGrid,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
 import { setNewPoints } from "redux/reducer/userStatusReducer";
@@ -52,9 +59,9 @@ const Quiz = () => {
   };
 
   return (
-    <Box bg="#2447F9" color="white" px="5" py="10" borderRadius="2xl">
-      <Heading size="xl" mb="4">
-        Quiz
+    <Box bg="#2447F9" color="white" px="5" py="10" borderRadius="2xl" mt="16">
+      <Heading size="xl" mb="6">
+        Kuis
       </Heading>
       {showResult ? (
         claimed ? (
@@ -62,15 +69,15 @@ const Quiz = () => {
             <Text>Selamat, kamu mendapatkan {score} poin 🎉</Text>
           </Box>
         ) : (
-          <Stack>
+          <Stack gap="6">
             <Text>Jumlah jawaban benar: {score}</Text>
             <Button onClick={handleClaimPointsButtonClick}>Klaim Poin</Button>
           </Stack>
         )
       ) : (
         <Box>
-          <Text mb="2">{quiz[currentQuestion].question}</Text>
-          <HStack spacing="4">
+          <Text>{quiz[currentQuestion].question}</Text>
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 2 }} spacing="6" my="6">
             {quiz[currentQuestion].answers.map((answer, index) => (
               <Button
                 key={index}
@@ -79,7 +86,10 @@ const Quiz = () => {
                 {answer}
               </Button>
             ))}
-          </HStack>
+          </SimpleGrid>
+          <Text>
+            Pertanyaan {currentQuestion + 1}/{quiz.length}
+          </Text>
         </Box>
       )}
     </Box>
