@@ -50,6 +50,28 @@ const fetchArticlesByCategory = async (category: string) => {
   return data.articles;
 };
 
+const fetchBasicArticlesByCategory = async (category: string) => {
+  const data = await request<Articles>(
+    contentAPI,
+    `{
+        articles(where: {category: "${category}", articleType: "basic"}) {
+          title
+          slug
+          coverImage {
+            url
+          }
+          category
+          articleType
+          excerpt
+          createdAt
+          updatedAt
+        }
+    }`
+  );
+
+  return data.articles;
+};
+
 const fetchLatestArticles = async () => {
   const data = await request<Articles>(
     contentAPI,
@@ -141,6 +163,7 @@ const fetchAllBasicArticles = async () => {
 export {
   fetchArticleBySlug,
   fetchArticlesByCategory,
+  fetchBasicArticlesByCategory,
   fetchLatestArticles,
   fetchPremiumArticles,
   fetchAllArticles,

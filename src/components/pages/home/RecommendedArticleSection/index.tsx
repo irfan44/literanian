@@ -21,8 +21,6 @@ const RecommendedArticleSection = () => {
     setArticleData(article);
   };
 
-  const articles = articleData.slice(0, 6);
-
   useEffect(() => {
     getArticle();
   }, []);
@@ -34,7 +32,7 @@ const RecommendedArticleSection = () => {
         <Text>Beberapa artikel populer yang kami rekomendasikan</Text>
       </VStack>
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing="6" mt={6}>
-        {articles.map((article) => {
+        {articleData.map((article) => {
           return <ArticleCard key={article.slug} {...article} />;
         })}
       </SimpleGrid>
