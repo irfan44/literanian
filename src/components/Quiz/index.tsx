@@ -5,6 +5,7 @@ import {
   SimpleGrid,
   Stack,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
@@ -20,6 +21,7 @@ const Quiz = () => {
   const [showResult, setShowResult] = useState(false);
 
   const dispatch = useAppDispatch();
+  const toast = useToast();
 
   const quiz = [
     {
@@ -30,6 +32,24 @@ const Quiz = () => {
     },
     {
       id: 2,
+      question: "What is the capital of Indonesia?",
+      answers: ["Jakarta", "Bandung", "Surabaya", "Yogyakarta"],
+      correctAnswer: "Jakarta",
+    },
+    {
+      id: 3,
+      question: "What is the capital of Indonesia?",
+      answers: ["Jakarta", "Bandung", "Surabaya", "Yogyakarta"],
+      correctAnswer: "Jakarta",
+    },
+    {
+      id: 4,
+      question: "What is the capital of Indonesia?",
+      answers: ["Jakarta", "Bandung", "Surabaya", "Yogyakarta"],
+      correctAnswer: "Jakarta",
+    },
+    {
+      id: 5,
       question: "What is the capital of Indonesia?",
       answers: ["Jakarta", "Bandung", "Surabaya", "Yogyakarta"],
       correctAnswer: "Jakarta",
@@ -54,6 +74,12 @@ const Quiz = () => {
     if (uid !== null && points !== null) {
       const newPoints = await handleAddPoints(uid, points, score);
       dispatch(setNewPoints(newPoints));
+      toast({
+        title: `Poin sudah di klaim! Kamu mendapat ${score} poin 🎉`,
+        position: "top-right",
+        status: "success",
+        duration: 2000,
+      });
       setClaimed(true);
     }
   };
