@@ -50,11 +50,33 @@ const fetchArticlesByCategory = async (category: string) => {
   return data.articles;
 };
 
+const fetchBasicArticlesByCategory = async (category: string) => {
+  const data = await request<Articles>(
+    contentAPI,
+    `{
+        articles(where: {category: "${category}", articleType: "basic"}) {
+          title
+          slug
+          coverImage {
+            url
+          }
+          category
+          articleType
+          excerpt
+          createdAt
+          updatedAt
+        }
+    }`
+  );
+
+  return data.articles;
+};
+
 const fetchLatestArticles = async () => {
   const data = await request<Articles>(
     contentAPI,
     `{
-        articles(orderBy: createdAt_DESC) {
+        articles(orderBy: createdAt_DESC, where: {articleType: "basic"}, first: 6) {
           title
           slug
           coverImage {
@@ -94,9 +116,56 @@ const fetchPremiumArticles = async () => {
   return data.articles;
 };
 
+const fetchAllArticles = async () => {
+  const data = await request<Articles>(
+    contentAPI,
+    `{
+        articles(orderBy: createdAt_DESC) {
+          title
+          slug
+          coverImage {
+            url
+          }
+          category
+          articleType
+          excerpt
+          createdAt
+          updatedAt
+        }
+    }`
+  );
+
+  return data.articles;
+};
+
+const fetchAllBasicArticles = async () => {
+  const data = await request<Articles>(
+    contentAPI,
+    `{
+        articles(orderBy: createdAt_DESC, where: {articleType: "basic"}) {
+          title
+          slug
+          coverImage {
+            url
+          }
+          category
+          articleType
+          excerpt
+          createdAt
+          updatedAt
+        }
+    }`
+  );
+
+  return data.articles;
+};
+
 export {
   fetchArticleBySlug,
   fetchArticlesByCategory,
+  fetchBasicArticlesByCategory,
   fetchLatestArticles,
   fetchPremiumArticles,
+  fetchAllArticles,
+  fetchAllBasicArticles,
 };

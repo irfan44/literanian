@@ -7,7 +7,10 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { fetchArticlesByCategory } from "api/graphcms";
+import {
+  fetchArticlesByCategory,
+  fetchBasicArticlesByCategory,
+} from "api/graphcms";
 import ArticleCard from "components/ArticleCard";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -17,14 +20,20 @@ import { ArticleData } from "types/article";
 const CategoryArticles = () => {
   const [articles, setArticles] = useState<ArticleData[]>([]);
   const { uid } = useAppSelector((state) => state.userProfile);
+  const { premium } = useAppSelector((state) => state.userStatus);
   const { slug } = useParams();
   const navigate = useNavigate();
 
   const getArticles = async () => {
     if (slug) {
       try {
-        const articles = await fetchArticlesByCategory(slug);
-        setArticles(articles);
+        if (premium) {
+          const articles = await fetchArticlesByCategory(slug);
+          setArticles(articles);
+        } else {
+          const articles = await fetchBasicArticlesByCategory(slug);
+          setArticles(articles);
+        }
       } catch (error) {
         console.log(error);
       }

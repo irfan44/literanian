@@ -20,6 +20,7 @@ import { Prose } from "@nikolovlazar/chakra-ui-prose";
 import formatDate from "utils/formatDate";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppSelector } from "redux/hooks";
+import Quiz from "components/Quiz";
 
 const ContentArticle = () => {
   const [article, setArticle] = useState<ArticleContent>();
@@ -98,9 +99,12 @@ const ContentArticle = () => {
             />
             {articlePremium ? (
               premium ? (
-                <Prose>
-                  <RichText content={article.content.raw} />
-                </Prose>
+                <>
+                  <Prose>
+                    <RichText content={article.content.raw} />
+                  </Prose>
+                  <Quiz />
+                </>
               ) : (
                 <Box
                   as={Center}
@@ -118,9 +122,12 @@ const ContentArticle = () => {
                 </Box>
               )
             ) : (
-              <Prose>
-                <RichText content={article.content.raw} />
-              </Prose>
+              <>
+                <Prose>
+                  <RichText content={article.content.raw} />
+                </Prose>
+                <Quiz />
+              </>
             )}
           </>
         )}

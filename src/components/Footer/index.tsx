@@ -1,13 +1,4 @@
-import {
-  Box,
-  Container,
-  Heading,
-  SimpleGrid,
-  Stack,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
-import Navlink from "components/Navbar/Navlink";
+import { Box, Container, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 
 const Footer = () => {
   return (
@@ -26,11 +17,7 @@ const Footer = () => {
             <Text>© 2022 (nama brand). All right reserved</Text>
             <Text>Dibuat dengan ❤️ oleh tim FE-ED6</Text>
           </Box>
-          <Stack align={"flex-start"}>
-            <Navlink />
-          </Stack>
         </SimpleGrid>
-        <VStack></VStack>
       </Container>
     </Box>
   );

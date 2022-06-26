@@ -26,14 +26,19 @@ const HeroSection = () => {
       maxW="6xl"
       pt="8%"
       pb="5%"
-
     >
       <Box
         w={{ base: "100%", md: "100%", lg: "50%" }}
         pr={{ base: "0", md: "0", lg: "6" }}
         pb={{ base: "16", md: "16", lg: "0" }}
       >
-        <Heading as="h1" size="2xl" mb="6" letterSpacing={0.5}>
+        <Heading
+          as="h1"
+          size="2xl"
+          mb="6"
+          letterSpacing="wide"
+          lineHeight="shorter"
+        >
           Explorasi Berbagai Artikel Menarik Di (nama brand)
         </Heading>
         <Text fontWeight={400} fontSize="md" mb="6">
