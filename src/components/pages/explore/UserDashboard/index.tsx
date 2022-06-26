@@ -11,6 +11,7 @@ import {
   StatHelpText,
   StatNumber,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
@@ -30,6 +31,7 @@ const UserDashboard = () => {
   const [isClaimable, setIsClaimable] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const dispatch = useAppDispatch();
+  const toast = useToast();
 
   const expireDate = premiumExpiry && formatDate(premiumExpiry);
 
@@ -47,6 +49,14 @@ const UserDashboard = () => {
       dispatch(setNewPoints(newPoints));
       setIsClaimable(false);
       setIsLoading(false);
+
+      toast({
+        title: "Selamat datang di Akun Premium 🎉",
+        description: "Kamu sudah mengklaim akun premium dan mendapat 5 poin!",
+        status: "success",
+        duration: 4000,
+        position: "top-right",
+      });
     }
   };
 

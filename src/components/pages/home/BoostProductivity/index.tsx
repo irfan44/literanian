@@ -13,7 +13,7 @@ const BoostProductivitySection = () => {
       <VStack as={Center}>
         <Heading marginBottom={-2}>Metode Membaca Lebih</Heading>
         <Heading>Santai dan Terarah</Heading>
-        <Text marginBottom={10}>Boost Productivity</Text>
+        <Text marginBottom={10}>Meningkatkan produktivitas</Text>
       </VStack>
       <Center>
         <Image boxSize={"65%"} src="/images/boost.png" paddingTop={"6%"} />

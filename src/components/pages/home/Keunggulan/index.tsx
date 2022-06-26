@@ -16,7 +16,7 @@ const KeunggulanSection = () => {
     <Container maxW="6xl" py="16">
       <VStack as={Center}>
         <Heading>Keunggulan</Heading>
-        <Text>Top Featured</Text>
+        <Text>Beberapa keuntungan dari kami</Text>
       </VStack>
       <SimpleGrid
         columns={{ base: 1, md: 2, lg: 3 }}
@@ -68,13 +68,12 @@ const KeunggulanSection = () => {
           </Box>
           <Stack pt={5} align={"left"}>
             <Text color={"gray.700"} fontSize={"2xl"} fontWeight={900}>
-              Lifetime Access
+              Akses Seumur Hidup
             </Text>
             <Heading
               color={"gray.600"}
               lineHeight={7}
               fontSize={"16px"}
-              fontFamily={"Poppins"}
               fontWeight={400}
             >
               Membaca dan memahami informasi lebih santai tanpa batasan waktu
@@ -127,13 +126,12 @@ const KeunggulanSection = () => {
           </Box>
           <Stack pt={5} align={"left"}>
             <Text color={"gray.700"} fontSize={"2xl"} fontWeight={900}>
-              Free
+              Gratis
             </Text>
             <Heading
               color={"gray.600"}
               lineHeight={7}
               fontSize={"16px"}
-              fontFamily={"Poppins"}
               fontWeight={400}
             >
               Bergabung untuk pertama kali dan dapatkan beberapa bacaan gratis
@@ -186,13 +184,12 @@ const KeunggulanSection = () => {
           </Box>
           <Stack pt={5} align={"left"}>
             <Text color={"gray.700"} fontSize={"2xl"} fontWeight={900}>
-              Knowledge
+              Pemahaman Baru
             </Text>
             <Heading
               color={"gray.600"}
               lineHeight={7}
               fontSize={"16px"}
-              fontFamily={"Poppins"}
               fontWeight={400}
             >
               Mendapatkan pemahaman yang lebih dari sebelumnya
@@ -245,13 +242,12 @@ const KeunggulanSection = () => {
           </Box>
           <Stack pt={5} align={"left"}>
             <Text color={"gray.700"} fontSize={"2xl"} fontWeight={900}>
-              Practice Questions
+              Soal Latihan
             </Text>
             <Heading
               color={"gray.600"}
               lineHeight={7}
               fontSize={"16px"}
-              fontFamily={"Poppins"}
               fontWeight={400}
             >
               Membaca dan dapatkan informasi untuk soal latihan yang ada
@@ -304,16 +300,15 @@ const KeunggulanSection = () => {
           </Box>
           <Stack pt={5} align={"left"}>
             <Text color={"gray.700"} fontSize={"2xl"} fontWeight={900}>
-              Points
+              Poin
             </Text>
             <Heading
               color={"gray.600"}
               lineHeight={7}
               fontSize={"16px"}
-              fontFamily={"Poppins"}
               fontWeight={400}
             >
-              Selesaikan kursus bacaan dan dapatkan point
+              Selesaikan kuis dalam artkel dan dapatkan point
             </Heading>
             <Stack direction={"row"} align={"center"}></Stack>
           </Stack>
@@ -363,13 +358,12 @@ const KeunggulanSection = () => {
           </Box>
           <Stack pt={5} align={"left"}>
             <Text color={"gray.700"} fontSize={"2xl"} fontWeight={900}>
-              Pixel Matters
+              Desain yang Baik
             </Text>
             <Heading
               color={"gray.600"}
               lineHeight={7}
               fontSize={"16px"}
-              fontFamily={"Poppins"}
               fontWeight={400}
             >
               Projek bacaan yang dibangun memiliki konsep desain yang baik

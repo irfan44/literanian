@@ -24,7 +24,7 @@ const HeroSection = () => {
       direction={{ base: "column", md: "column", lg: "row" }}
       alignItems="center"
       maxW="6xl"
-      pt="8%"
+      pt="16"
       pb="5%"
     >
       <Box
