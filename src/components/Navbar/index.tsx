@@ -24,9 +24,13 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
+import { auth } from "api/firebase";
+import { signOut } from "firebase/auth";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "redux/hooks";
+import { useAppDispatch, useAppSelector } from "redux/hooks";
+import { clearUserProfile } from "redux/reducer/userProfileReducer";
+import { clearUserStatus } from "redux/reducer/userStatusReducer";
 import Navlink from "./Navlink";
 
 const Navbar = () => {
@@ -37,9 +41,22 @@ const Navbar = () => {
     (state) => state.userProfile
   );
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleLogin = () => {
     navigate("/login");
+  };
+
+  const handleLogout = () => {
+    signOut(auth)
+      .then(() => {
+        dispatch(clearUserProfile());
+        dispatch(clearUserStatus());
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const profileButton = () => {
@@ -60,7 +77,7 @@ const Navbar = () => {
           </HStack>
         </MenuButton>
         <MenuList>
-          <MenuItem>Hello</MenuItem>
+          <MenuItem onClick={handleLogout}>Keluar</MenuItem>
         </MenuList>
       </Menu>
     );
@@ -70,11 +87,10 @@ const Navbar = () => {
     <Box bg="#f6f8fd">
       <Container
         maxW="7xl"
-        py="4"
-        pt="6"
+        py="6"
         fontWeight={600}
         color={"gray.700"}
-        letterSpacing={0.9}
+        letterSpacing={"normal"}
       >
         <Flex alignItems={"center"}>
           <Text>Logo</Text>
