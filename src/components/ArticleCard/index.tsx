@@ -47,6 +47,7 @@ const ArticleCard = ({
         width="100%"
         height="200px"
         objectFit="cover"
+        loading="lazy"
       />
       <Heading as="h3" size="lg">
         <LinkOverlay as={RouterLink} to={uid ? `/article/${slug}` : "/login"}>
