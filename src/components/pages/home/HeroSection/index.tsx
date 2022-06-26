@@ -69,7 +69,7 @@ const HeroSection = () => {
       </Box>
       <Box w={{ base: "100%", md: "100%", lg: "60%" }}>
         <Image
-          src="/images/hero.png"
+          src="/images/hero.webp"
           alt="Hero image"
           borderRadius="xl"
           w="full"

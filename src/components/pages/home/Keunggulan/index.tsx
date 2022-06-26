@@ -63,7 +63,7 @@ const KeunggulanSection = () => {
               height={90}
               width={90}
               objectFit={"cover"}
-              src={"/images/keunggulan/stopwatch.png"}
+              src={"/images/keunggulan/stopwatch.webp"}
               alt="Stopwatch"
             />
           </Box>
@@ -122,7 +122,7 @@ const KeunggulanSection = () => {
               height={90}
               width={90}
               objectFit={"cover"}
-              src={"/images/keunggulan/badge.png"}
+              src={"/images/keunggulan/badge.webp"}
               alt="Keunggulan"
             />
           </Box>
@@ -181,7 +181,7 @@ const KeunggulanSection = () => {
               height={90}
               width={90}
               objectFit={"cover"}
-              src={"/images/keunggulan/strategy.png"}
+              src={"/images/keunggulan/strategy.webp"}
               alt="Strategi"
             />
           </Box>
@@ -240,7 +240,7 @@ const KeunggulanSection = () => {
               height={90}
               width={90}
               objectFit={"cover"}
-              src={"/images/keunggulan/puzzle.png"}
+              src={"/images/keunggulan/puzzle.webp"}
               alt="Puzzle"
             />
           </Box>
@@ -299,7 +299,7 @@ const KeunggulanSection = () => {
               height={90}
               width={90}
               objectFit={"cover"}
-              src={"/images/keunggulan/prize.png"}
+              src={"/images/keunggulan/prize.webp"}
               alt="Hadiah"
             />
           </Box>
@@ -358,7 +358,7 @@ const KeunggulanSection = () => {
               height={90}
               width={90}
               objectFit={"cover"}
-              src={"/images/keunggulan/list.png"}
+              src={"/images/keunggulan/list.webp"}
               alt="Daftar"
             />
           </Box>
