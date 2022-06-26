@@ -29,7 +29,9 @@ const RecommendedArticleSection = () => {
     <Container maxW="6xl" py="16">
       <VStack as={Center}>
         <Heading>Artikel Rekomendasi</Heading>
-        <Text>Beberapa artikel populer yang kami rekomendasikan</Text>
+        <Text textAlign="center">
+          Beberapa artikel populer yang kami rekomendasikan
+        </Text>
       </VStack>
       <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing="6" mt={6}>
         {articleData.map((article) => {

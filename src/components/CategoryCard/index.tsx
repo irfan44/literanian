@@ -37,6 +37,7 @@ const CategoryCard = ({ title, slug, image, subtitle }: Props) => {
         height="200px"
         objectFit="cover"
         borderRadius="2xl"
+        loading="lazy"
       />
       <Heading as="h3" size="lg">
         <LinkOverlay as={RouterLink} to={`/category/${slug}`}>
