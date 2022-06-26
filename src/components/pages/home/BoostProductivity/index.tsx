@@ -23,8 +23,8 @@ const BoostProductivitySection = () => {
         <Image
           src="/images/boost.webp"
           paddingTop={"6%"}
-          w="770px"
-          h="580px"
+          w={["100%", "770px"]}
+          h={["380px", "580px"]}
           alt="Ilustrasi Belajar"
           objectFit="cover"
         />
