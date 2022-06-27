@@ -21,12 +21,11 @@ const BoostProductivitySection = () => {
       </VStack>
       <Center>
         <Image
-          src="/images/boost.webp"
+          src="/images/boost.svg"
           paddingTop={"6%"}
           w={["100%", "770px"]}
           h={["380px", "580px"]}
           alt="Ilustrasi Belajar"
-          objectFit="cover"
         />
       </Center>
     </Container>
