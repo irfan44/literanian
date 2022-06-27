@@ -104,7 +104,10 @@ const Login = () => {
         </Box>
         <Box w={{ base: "100%", md: "100%", lg: "50%" }}>
           <Heading>Masuk</Heading>
-          <Text mb="10">Halo, Selamat datang!</Text>
+          <Text mb="10">
+            Halo, Selamat datang! Masuk dengan akun Google dan mulai membaca
+            untuk mengoleksi poin!
+          </Text>
           <Button
             isLoading={loading}
             onClick={handleLogin}
