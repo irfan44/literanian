@@ -4,6 +4,7 @@ import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
+  Button,
   Center,
   Container,
   Heading,
@@ -21,11 +22,13 @@ import formatDate from "utils/formatDate";
 import { Link, useNavigate } from "react-router-dom";
 import { useAppSelector } from "redux/hooks";
 import Quiz from "components/Quiz";
+import { checkPoints } from "utils/handleUser";
 
 const ContentArticle = () => {
   const [article, setArticle] = useState<ArticleContent>();
+  const [isClaimable, setIsClaimable] = useState(false);
   const { uid } = useAppSelector((state) => state.userProfile);
-  const { premium } = useAppSelector((state) => state.userStatus);
+  const { premium, points } = useAppSelector((state) => state.userStatus);
   const { slug } = useParams();
   const navigate = useNavigate();
 
@@ -40,11 +43,17 @@ const ContentArticle = () => {
     }
   };
 
+  const checkingPoints = () => {
+    const check = points !== null && checkPoints(points);
+    setIsClaimable(check);
+  };
+
   const date = article && formatDate(article.createdAt);
   const articlePremium = article && article.articleType === "premium";
 
   useEffect(() => {
     getArticleContent();
+    checkingPoints();
     if (!uid) {
       navigate("/login");
     }
@@ -103,7 +112,32 @@ const ContentArticle = () => {
                   <Prose>
                     <RichText content={article.content.raw} />
                   </Prose>
-                  <Quiz />
+                  {isClaimable ? (
+                    <Box
+                      bg="#2447F9"
+                      color="white"
+                      px="5"
+                      py="10"
+                      borderRadius="2xl"
+                      mt="16"
+                    >
+                      <Heading size="lg" mb="6">
+                        Kamu belum klaim akun premium!
+                      </Heading>
+                      <Text mb="4">
+                        Kembali ke halaman ekplorasi untuk klaim akun premium
+                      </Text>
+                      <Button
+                        variant="outline"
+                        colorScheme="white"
+                        onClick={() => navigate("/explore")}
+                      >
+                        Kembali ke Eksplorasi
+                      </Button>
+                    </Box>
+                  ) : (
+                    <Quiz />
+                  )}
                 </>
               ) : (
                 <Box
@@ -126,7 +160,32 @@ const ContentArticle = () => {
                 <Prose>
                   <RichText content={article.content.raw} />
                 </Prose>
-                <Quiz />
+                {isClaimable ? (
+                  <Box
+                    bg="#2447F9"
+                    color="white"
+                    px="5"
+                    py="10"
+                    borderRadius="2xl"
+                    mt="16"
+                  >
+                    <Heading size="lg" mb="6">
+                      Kamu belum klaim akun premium!
+                    </Heading>
+                    <Text mb="4">
+                      Kembali ke halaman ekplorasi untuk klaim akun premium
+                    </Text>
+                    <Button
+                      variant="outline"
+                      colorScheme="white"
+                      onClick={() => navigate("/explore")}
+                    >
+                      Kembali ke Eksplorasi
+                    </Button>
+                  </Box>
+                ) : (
+                  <Quiz />
+                )}
               </>
             )}
           </>
