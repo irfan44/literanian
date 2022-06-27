@@ -27,9 +27,9 @@ const RecommendedArticleSection = () => {
 
   return (
     <Container maxW="6xl" py="16">
-      <VStack as={Center}>
+      <VStack as={Center} textAlign="center">
         <Heading>Artikel Rekomendasi</Heading>
-        <Text textAlign="center">
+        <Text >
           Beberapa artikel populer yang kami rekomendasikan
         </Text>
       </VStack>
