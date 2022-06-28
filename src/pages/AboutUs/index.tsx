@@ -1,4 +1,3 @@
-import { ExternalLinkIcon } from "@chakra-ui/icons";
 import {
   Container,
   SimpleGrid,
@@ -8,122 +7,11 @@ import {
   Text,
   Stack,
   Box,
-  HStack,
-  Icon,
-  Center,
-  UnorderedList,
-  ListItem,
-  Link,
 } from "@chakra-ui/react";
-import { FaEnvelope, FaInstagram, FaYoutube } from "react-icons/fa";
-
-const SocialMedia = () => {
-  return (
-    <Stack spacing={4}>
-      <Text fontWeight="medium">Media sosial :</Text>
-      <HStack>
-        <Center p="2" bg="white" borderRadius="full">
-          <Icon as={FaInstagram} />
-        </Center>
-        <Text>gigih</Text>
-      </HStack>
-      <HStack>
-        <Center p="2" bg="red" borderRadius="full">
-          <Icon as={FaYoutube} color="white" />
-        </Center>
-        <Text>gigih TV</Text>
-      </HStack>
-      <HStack>
-        <Center p="2" bg="yellow.400" borderRadius="full">
-          <Icon as={FaEnvelope} color="white" />
-        </Center>
-        <Text>mail@mail.com</Text>
-      </HStack>
-    </Stack>
-  );
-};
-
-const GoalsCard = () => {
-  return (
-    <Box bg="white" p="5" borderRadius="2xl">
-      <Heading size="md" mb="6">
-        Tujuan Kami
-      </Heading>
-      <Text>Tujuan pembuatan produk :</Text>
-      <UnorderedList>
-        <ListItem>
-          Meningkatkan minat baca 10% pengguna dari minimal 100 pengguna
-          berdasarkan hasil survei singkat dengan pertanyaan ya/tidak
-        </ListItem>
-        <ListItem>
-          Menampilkan berbagai artikel faktual dan menarik serta menambah
-          pengetahuan pengguna.
-        </ListItem>
-        <ListItem>Meningkatkan frekuensi membaca pengguna.</ListItem>
-        <ListItem>
-          Meningkatkan ragam bacaan literasi digital yang dibaca pengguna.
-        </ListItem>
-      </UnorderedList>
-    </Box>
-  );
-};
-
-const SuccessMetricCard = () => {
-  return (
-    <Box bg="white" p="5" borderRadius="2xl">
-      <Heading size="md" mb="6">
-        Ukuran Kesuksesan
-      </Heading>
-      <Text>Kriteria kesuksesan dari produk :</Text>
-      <UnorderedList>
-        <ListItem>
-          Mampu mencapai target kami dalam meningkatkan minat baca 10% dari
-          minimal 100 pengguna menggunakan metode yang ditentukan untuk mengukur
-          keberhasilan
-        </ListItem>
-        <ListItem>
-          Mampu membuat website literasi digital sesuai spesifikasi yang
-          ditentukan
-        </ListItem>
-        <ListItem>Mampu memenuhi tujuan dan target output produk kami</ListItem>
-      </UnorderedList>
-    </Box>
-  );
-};
-
-const CreditsCard = () => {
-  return (
-    <Box bg="white" p="5" borderRadius="2xl">
-      <Heading size="md" mb="6">
-        Kredit
-      </Heading>
-      <UnorderedList>
-        <ListItem>
-          Foto oleh berbagai fotografer di{" "}
-          <Link
-            color="#2447F9"
-            fontWeight="bold"
-            href="https://www.unsplash.com"
-            isExternal
-          >
-            unsplash.com <ExternalLinkIcon />
-          </Link>
-        </ListItem>
-        <ListItem>
-          Ilustrasi di desain oleh{" "}
-          <Link
-            color="#2447F9"
-            fontWeight="bold"
-            isExternal
-            href="https://www.freepik.com"
-          >
-            freepik <ExternalLinkIcon />
-          </Link>
-        </ListItem>
-      </UnorderedList>
-    </Box>
-  );
-};
+import CreditsCard from "components/pages/aboutUs/CreditsCard";
+import GoalsCard from "components/pages/aboutUs/GoalsCard";
+import SocialMedia from "components/pages/aboutUs/SocialMedia";
+import SuccessMetricCard from "components/pages/aboutUs/SuccessMetricCard";
 
 const AboutUs = () => {
   return (
@@ -140,10 +28,10 @@ const AboutUs = () => {
               kami sangat memahami bahwa generasi sekarang banyak orang yang
               kurang minat dalam membaca maka dari itu untuk mengembangkan minat
               baca yang tinggi dibuatlah website dengan media digital untuk
-              memberikan beberapa artikel yang bermanfaat dengan itu
-              literasikekinian.com sebagai media digital akan memberikan solusi
-              bagi orang yang tidak tertarik untuk membaca masalah yang
-              ditemukan oleh generasi sekarang ini.
+              memberikan beberapa artikel yang bermanfaat dengan itu Literanian
+              sebagai media digital akan memberikan solusi bagi orang yang tidak
+              tertarik untuk membaca masalah yang ditemukan oleh generasi
+              sekarang ini.
             </Text>
             <SocialMedia />
           </Stack>
