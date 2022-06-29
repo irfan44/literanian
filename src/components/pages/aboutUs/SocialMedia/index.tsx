@@ -25,7 +25,7 @@ const SocialMedia = () => {
       <Text fontWeight="medium">Media sosial :</Text>
       {socialMedia.map((socials) => {
         return (
-          <HStack key={socials.name} as={Link} href={socials.url} isExternal>
+          <HStack key={socials.url} as={Link} href={socials.url} isExternal>
             <Center p="2" bg="#2447F9" borderRadius="full" color="white">
               <Icon as={socials.icon} />
             </Center>

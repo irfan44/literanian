@@ -23,6 +23,7 @@ const CategoryArticles = () => {
   const { premium } = useAppSelector((state) => state.userStatus);
   const { slug } = useParams();
   const navigate = useNavigate();
+  const title = slug?.toUpperCase();
 
   const getArticles = async () => {
     if (slug) {
@@ -48,6 +49,7 @@ const CategoryArticles = () => {
       navigate("/login");
     }
     window.scrollTo(0, 0);
+    document.title = `${title} | Literanian`;
   }, []);
 
   return (

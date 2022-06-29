@@ -60,6 +60,10 @@ const ContentArticle = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    document.title = `${article?.title || "memuat.."} | Literanian`;
+  }, [article]);
+
   return (
     <Box minH="100vh" bg="#f6f8fd" py="16">
       <Container maxW="4xl">

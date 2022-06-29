@@ -12,8 +12,13 @@ import CreditsCard from "components/pages/aboutUs/CreditsCard";
 import GoalsCard from "components/pages/aboutUs/GoalsCard";
 import SocialMedia from "components/pages/aboutUs/SocialMedia";
 import SuccessMetricCard from "components/pages/aboutUs/SuccessMetricCard";
+import { useEffect } from "react";
 
 const AboutUs = () => {
+  useEffect(() => {
+    document.title = "Tentang Kami | Literanian";
+  }, []);
+
   return (
     <Box minH="100vh" bg="#f6f8fd" py={16}>
       <Container maxW={"6xl"}>
@@ -22,7 +27,9 @@ const AboutUs = () => {
             <Text fontWeight="bold" fontSize="xl">
               Tentang Kami
             </Text>
-            <Heading>A digital Product design agency</Heading>
+            <Heading>
+              Suatu produk digital untuk meningkatkan minat baca
+            </Heading>
             <Text>
               Dengan berkembangnya era digital yang sangat cepat sekarang ini,
               kami sangat memahami bahwa generasi sekarang banyak orang yang
