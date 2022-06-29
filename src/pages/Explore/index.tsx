@@ -52,6 +52,7 @@ const Explore = () => {
       navigate("/login");
     }
     window.scrollTo(0, 0);
+    document.title = `Eksplorasi | Literanian`;
   }, []);
 
   return (

@@ -1,4 +1,4 @@
-import { Box, Container, Heading, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Container, Image, SimpleGrid, Text } from "@chakra-ui/react";
 
 const Footer = () => {
   return (
@@ -9,12 +9,12 @@ const Footer = () => {
           spacing={8}
         >
           <Box>
-            <Heading>Logo</Heading>
+            <Image src="/images/logo.svg" w="142px" mb="6" />
             <Text mb="16">
               Explorasi berbagai artikel menarik dan kembangkan pengetahuanmu.
               Kumpulkan poin untuk mendapatkan akses ke artikel premium
             </Text>
-            <Text>© 2022 (nama brand). All right reserved</Text>
+            <Text>© 2022 Literanian</Text>
             <Text>Dibuat dengan ❤️ oleh tim FE-ED6</Text>
           </Box>
         </SimpleGrid>

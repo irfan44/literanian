@@ -4,8 +4,13 @@ import CategorySection from "components/pages/home/CategorySection";
 import HeroSection from "components/pages/home/HeroSection";
 import KeunggulanSection from "components/pages/home/Keunggulan";
 import RecommendedArticleSection from "components/pages/home/RecommendedArticleSection";
+import { useEffect } from "react";
 
 const Home = () => {
+  useEffect(() => {
+    document.title = `Beranda | Literanian`;
+  }, []);
+
   return (
     <Box minH="100vh" bg="#f6f8fd">
       <HeroSection />

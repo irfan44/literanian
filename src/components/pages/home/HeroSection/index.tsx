@@ -42,7 +42,7 @@ const HeroSection = () => {
           letterSpacing="wide"
           lineHeight="shorter"
         >
-          Explorasi Berbagai Artikel Menarik Di (nama brand)
+          Explorasi Berbagai Artikel Menarik Di Literanian
         </Heading>
         <Text fontWeight={400} fontSize="md" mb="6">
           Baca artikel dan kerjakan kuis untuk kumpulkan poin. Penuhi target dan

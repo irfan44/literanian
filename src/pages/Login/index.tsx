@@ -14,7 +14,7 @@ import {
 import { auth, db } from "api/firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "redux/hooks";
 import { setUserProfile } from "redux/reducer/userProfileReducer";
@@ -88,6 +88,9 @@ const Login = () => {
       });
   };
 
+  useEffect(() => {
+    document.title = "Masuk | Literanian";
+  }, []);
   return (
     <Box as={Center} minH="100vh" bg="#f6f8fd" py="16">
       <Container
@@ -104,7 +107,10 @@ const Login = () => {
         </Box>
         <Box w={{ base: "100%", md: "100%", lg: "50%" }}>
           <Heading>Masuk</Heading>
-          <Text mb="10">Halo, Selamat datang!</Text>
+          <Text mb="10">
+            Halo, Selamat datang! Masuk dengan akun Google dan mulai membaca
+            untuk mengoleksi poin!
+          </Text>
           <Button
             isLoading={loading}
             onClick={handleLogin}

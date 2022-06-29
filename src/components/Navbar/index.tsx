@@ -15,6 +15,8 @@ import {
   Hide,
   HStack,
   IconButton,
+  Image,
+  Link,
   Menu,
   MenuButton,
   MenuItem,
@@ -27,7 +29,7 @@ import {
 import { auth } from "api/firebase";
 import { signOut } from "firebase/auth";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
 import { clearUserProfile } from "redux/reducer/userProfileReducer";
 import { clearUserStatus } from "redux/reducer/userStatusReducer";
@@ -93,7 +95,9 @@ const Navbar = () => {
         letterSpacing={"normal"}
       >
         <Flex alignItems={"center"}>
-          <Text>Logo</Text>
+          <Link as={RouterLink} to="/">
+            <Image src="/images/logo.svg" w="142px" />
+          </Link>
           <Spacer />
           <Hide below="sm">
             <Navlink />
