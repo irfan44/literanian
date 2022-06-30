@@ -10,9 +10,10 @@ import {
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "redux/hooks";
 import { setNewPoints } from "redux/reducer/userStatusReducer";
+import { Quiz as QuizType } from "types/article";
 import { handleAddPoints } from "utils/handleUser";
 
-const Quiz = () => {
+const Quiz = ({ quiz }: QuizType) => {
   const { uid } = useAppSelector((state) => state.userProfile);
   const { points } = useAppSelector((state) => state.userStatus);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -22,39 +23,6 @@ const Quiz = () => {
 
   const dispatch = useAppDispatch();
   const toast = useToast();
-
-  const quiz = [
-    {
-      id: 1,
-      question: "What is the capital of Indonesia?",
-      answers: ["Jakarta", "Bandung", "Surabaya", "Yogyakarta"],
-      correctAnswer: "Jakarta",
-    },
-    {
-      id: 2,
-      question: "What is the capital of Indonesia?",
-      answers: ["Jakarta", "Bandung", "Surabaya", "Yogyakarta"],
-      correctAnswer: "Jakarta",
-    },
-    {
-      id: 3,
-      question: "What is the capital of Indonesia?",
-      answers: ["Jakarta", "Bandung", "Surabaya", "Yogyakarta"],
-      correctAnswer: "Jakarta",
-    },
-    {
-      id: 4,
-      question: "What is the capital of Indonesia?",
-      answers: ["Jakarta", "Bandung", "Surabaya", "Yogyakarta"],
-      correctAnswer: "Jakarta",
-    },
-    {
-      id: 5,
-      question: "What is the capital of Indonesia?",
-      answers: ["Jakarta", "Bandung", "Surabaya", "Yogyakarta"],
-      correctAnswer: "Jakarta",
-    },
-  ];
 
   const handleAnswerButtonClick = (answer: string) => {
     const nextQuestion = currentQuestion + 1;

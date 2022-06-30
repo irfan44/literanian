@@ -18,9 +18,7 @@ describe("Footer Test", () => {
         "Explorasi berbagai artikel menarik dan kembangkan pengetahuanmu. Kumpulkan poin untuk mendapatkan akses ke artikel premium"
       )
     ).toBeInTheDocument();
-    expect(
-      screen.getByText("© 2022 (nama brand). All right reserved")
-    ).toBeInTheDocument();
+    expect(screen.getByText("© 2022 Literanian")).toBeInTheDocument();
     expect(
       screen.getByText("Dibuat dengan ❤️ oleh tim FE-ED6")
     ).toBeInTheDocument();

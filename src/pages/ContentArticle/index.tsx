@@ -139,8 +139,19 @@ const ContentArticle = () => {
                         Kembali ke Eksplorasi
                       </Button>
                     </Box>
+                  ) : article.quiz !== null ? (
+                    <Quiz quiz={article.quiz} />
                   ) : (
-                    <Quiz />
+                    <Box
+                      bg="#2447F9"
+                      color="white"
+                      px="5"
+                      py="10"
+                      borderRadius="2xl"
+                      mt="16"
+                    >
+                      <Heading size="lg">Tidak ada kuis di artikel ini</Heading>
+                    </Box>
                   )}
                 </>
               ) : (
@@ -187,8 +198,19 @@ const ContentArticle = () => {
                       Kembali ke Eksplorasi
                     </Button>
                   </Box>
+                ) : article.quiz !== null ? (
+                  <Quiz quiz={article.quiz} />
                 ) : (
-                  <Quiz />
+                  <Box
+                    bg="#2447F9"
+                    color="white"
+                    px="5"
+                    py="10"
+                    borderRadius="2xl"
+                    mt="16"
+                  >
+                    <Heading size="lg">Tidak ada kuis di artikel ini</Heading>
+                  </Box>
                 )}
               </>
             )}

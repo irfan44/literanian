@@ -12,7 +12,7 @@ import categoryList from "data/categoryList";
 import { Link as RouterLink } from "react-router-dom";
 
 const CategorySection = () => {
-  const categories = categoryList.slice(2);
+  const categories = categoryList.slice(0, 3);
 
   return (
     <Container maxW="6xl" py="16">
