@@ -6,6 +6,7 @@ import Login from "pages/Login";
 import { Route, Routes } from "react-router-dom";
 import ArticleContent from "pages/ContentArticle";
 import AboutUs from "pages/AboutUs";
+import Page404 from "pages/404";
 
 const AppRouter = () => {
   return (
@@ -17,6 +18,7 @@ const AppRouter = () => {
       <Route path="/category" element={<Category />} />
       <Route path="/category/:slug" element={<CategoryArticles />} />
       <Route path="/about-us" element={<AboutUs />} />
+      <Route path="*" element={<Page404 />} />
     </Routes>
   );
 };
