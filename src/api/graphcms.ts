@@ -19,6 +19,7 @@ const fetchArticleBySlug = async (slug: string) => {
             content {
               raw
             }
+            quiz
             createdAt
             updatedAt
         }

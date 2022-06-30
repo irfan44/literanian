@@ -13,8 +13,20 @@ export interface ArticleData {
   updatedAt: string;
 }
 
+export interface QuizData {
+  id: string;
+  question: string;
+  answers: string[];
+  correctAnswer: string;
+}
+
+export interface Quiz {
+  quiz: QuizData[];
+}
+
 export interface ArticleContent extends ArticleData {
   content: { raw: RichTextContent };
+  quiz: QuizData[];
 }
 
 export interface Article {
