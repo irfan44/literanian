@@ -131,7 +131,7 @@ const Navbar = () => {
         <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader>
-            <Text>Logo</Text>
+            <Image src="/images/logo.svg" w="142px" />
           </DrawerHeader>
           <DrawerBody>
             <Navlink />
