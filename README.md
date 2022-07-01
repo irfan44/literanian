@@ -125,7 +125,7 @@ $ npm start
 
 ### Testing
 
-Run `npm test` from your command line/terminal to run tests.
+Run `npm test` from your command line/terminal.
 
 <img src="docs/test-result.png" alt="Test result">
 
