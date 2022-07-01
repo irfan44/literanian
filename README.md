@@ -1,46 +1,55 @@
-# Getting Started with Create React App
+<h1 align="center">
+  <a href="https://github.com/irfan44/capstone-fe_ed6">
+    <img src="docs/logo.svg" alt="Logo" width="240px">
+  </a>
+</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  <br />
+  <a href="https://capstone-fe-ed6.vercel.app/"><strong>Visit Literanian</strong></a>
+  <br />
+</div>
 
-## Available Scripts
+<details open="open">
+<summary>Table of Contents</summary>
 
-In the project directory, you can run:
+- [About](#about)
+  - [Features](#features)
+  - [Built With](#built-with)
+  - [Technical Details](#technical-details)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+- [Feedback](#feedback)
 
-### `npm start`
+</details>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## About
 
-### `npm test`
+Literanian is a web application where users can read lots of artciles from various categories. Users can also finish quiz to get points. Points will be accumulated to unlock premium articles at certain checkpoints. Users will need to login before they can read articles.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Features
 
-### `npm run build`
+1. User login/registration using Google account.
+2. Displays a variety of interesting material to read.
+3. Display practice questions and quizzes
+4. Collect points when the user answers the quiz correctly.
+5. Unlock premium articles at certain checkpoints (example: at 100, 500, 1000, etc).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Built With
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. [Create React App](https://create-react-app.dev/) to initialize the project.
+2. Written in [Typescript](https://www.typescriptlang.org/)
+3. [Chakra UI](https://chakra-ui.com/) for building UI
+4. [React Redux](https://react-redux.js.org/) for state management
+5. [React Router](https://reactrouter.com/) for routing
+6. [GraphCMS](https://www.graphcms.com/) for content management
+7. [GraphQL Request](https://github.com/prisma-labs/graphql-request) for making GraphQL calls to GraphCMS
+8. [Jest](https://jestjs.io/) for testing
+9. Deployed on [Vercel](https://vercel.com/)
+10. [Firebase](https://firebase.google.com/) for authentication (Auth) & database (Firestore)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Technical Details
