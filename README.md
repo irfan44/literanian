@@ -32,7 +32,7 @@
 
 ## About
 
-Literanian is a web application where users can read lots of artciles from various categories. Users can also finish quiz to get points. Points will be accumulated to unlock premium articles at certain checkpoints. Users will need to login before they can read articles.
+Literanian is a digital literacy website that contains factual and interesting articles accompanied by images or animations to increase user interest in reading and increase interest in the material. Each material provided will be accompanied by practice questions or multiple choice quizzes to increase user interaction. To increase the user's incentive to read the material, after the user completes a quiz, there will be a number of points given to the user. These points will be accumulated and there will be several checkpoints of the number of points, for example at 50, 100, or 1000, that users can achieve and use to unlock premium articles for free. The existence of these incentives is carried out to keep users interested in reading and increase the frequency of reading. User will need to login before they can access articles.
 
 This project is part of Capstone Project for Generasi Gigih 2.0 from team FE-ED6.
 
@@ -44,7 +44,7 @@ This project is part of Capstone Project for Generasi Gigih 2.0 from team FE-ED6
 2. Displays a variety of interesting material to read.
 3. Display practice questions and quizzes
 4. Collect points when the user answers the quiz correctly.
-5. Unlock premium articles at certain checkpoints (example: at 100, 500, 1000, etc).
+5. Unlock premium articles at certain checkpoints (example: at 50, 80, 100, 500, etc).
 
 ### Built With
 
