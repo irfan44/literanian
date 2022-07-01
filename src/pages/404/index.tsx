@@ -4,12 +4,18 @@ import {
   Center,
   Container,
   Image,
+  Text,
   VStack,
 } from "@chakra-ui/react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Page404 = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = "Halaman Tidak Ditemukan | Literanian";
+  }, []);
 
   return (
     <Box minH="100vh" bg="#f6f8fd">
@@ -22,6 +28,7 @@ const Page404 = () => {
             h={["240px", "400px"]}
             mb="6"
           />
+          <Text mb="6">Halaman tidak ditemukan</Text>
           <Button bgColor={"#2447F9"} onClick={() => navigate("/")}>
             Kembali ke Beranda
           </Button>
