@@ -40,10 +40,10 @@ const Quiz = ({ quiz }: QuizType) => {
 
   const handleClaimPointsButtonClick = async () => {
     if (uid !== null && points !== null) {
-      const newPoints = await handleAddPoints(uid, points, score);
+      const newPoints = await handleAddPoints(uid, points, 5);
       dispatch(setNewPoints(newPoints));
       toast({
-        title: `Poin sudah di klaim! Kamu mendapat ${score} poin 🎉`,
+        title: `Poin sudah di klaim! Kamu mendapat 5 poin 🎉`,
         position: "top-right",
         status: "success",
         duration: 2000,
@@ -60,7 +60,7 @@ const Quiz = ({ quiz }: QuizType) => {
       {showResult ? (
         claimed ? (
           <Box>
-            <Text>Selamat, kamu mendapatkan {score} poin 🎉</Text>
+            <Text>Selamat, kamu mendapatkan 5 poin 🎉</Text>
           </Box>
         ) : (
           <Stack gap="6">
