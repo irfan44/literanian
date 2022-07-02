@@ -2,9 +2,6 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import userProfileReducer, {
-  setUserProfile,
-} from "redux/reducer/userProfileReducer";
 import store from "redux/store";
 import ArticleCard from ".";
 
@@ -57,10 +54,6 @@ describe("ArticleCard Test", () => {
   });
 
   test("ArticleCard should redirect to login page when clicked without login", () => {
-    userProfileReducer(
-      { uid: null, displayName: null, photoURL: null },
-      setUserProfile({ uid: "123", displayName: "test", photoUrl: "" })
-    );
     render(
       <BrowserRouter>
         <Provider store={store}>
