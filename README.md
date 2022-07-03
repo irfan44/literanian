@@ -129,6 +129,10 @@ Run `npm test` from your command line/terminal.
 
 <img src="docs/test-result.png" alt="Test result">
 
+Test Coverage
+
+<img src="docs/test-coverage.png" alt="Test coverage">
+
 ## Credits
 
 Thanks to everyone who contributed to this project :

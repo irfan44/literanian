@@ -10,12 +10,17 @@ import {
   Heading,
   HStack,
   Image,
+  SimpleGrid,
   Text,
 } from "@chakra-ui/react";
-import { fetchArticleBySlug } from "api/graphcms";
+import {
+  fetchArticleBySlug,
+  fetchArticlesByCategory,
+  fetchBasicArticlesByCategory,
+} from "api/graphcms";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
-import { ArticleContent } from "types/article";
+import { ArticleContent, ArticleData } from "types/article";
 import { RichText } from "@graphcms/rich-text-react-renderer";
 import { Prose } from "@nikolovlazar/chakra-ui-prose";
 import formatDate from "utils/formatDate";
@@ -23,9 +28,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAppSelector } from "redux/hooks";
 import Quiz from "components/Quiz";
 import { checkPoints } from "utils/handleUser";
+import ArticleCard from "components/ArticleCard";
 
 const ContentArticle = () => {
   const [article, setArticle] = useState<ArticleContent>();
+  const [relatedArticles, setRelatedArticles] = useState<ArticleData[]>([]);
   const [isClaimable, setIsClaimable] = useState(false);
   const { uid } = useAppSelector((state) => state.userProfile);
   const { premium, points } = useAppSelector((state) => state.userStatus);
@@ -40,6 +47,26 @@ const ContentArticle = () => {
       } catch (error) {
         console.log(error);
       }
+    }
+  };
+
+  const getRelatedArticles = async () => {
+    if (article !== undefined) {
+      try {
+        if (premium) {
+          const articles = await fetchArticlesByCategory(article.category);
+          const slicedArticles = articles.slice(0, 4);
+          setRelatedArticles(slicedArticles);
+        } else {
+          const articles = await fetchBasicArticlesByCategory(article.category);
+          const slicedArticles = articles.slice(0, 4);
+          setRelatedArticles(slicedArticles);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      setRelatedArticles([]);
     }
   };
 
@@ -58,9 +85,10 @@ const ContentArticle = () => {
       navigate("/login");
     }
     window.scrollTo(0, 0);
-  }, []);
+  }, [slug]);
 
   useEffect(() => {
+    getRelatedArticles();
     document.title = `${article?.title || "memuat.."} | Literanian`;
   }, [article]);
 
@@ -214,6 +242,14 @@ const ContentArticle = () => {
                 )}
               </>
             )}
+            <Heading mt="16" size="lg">
+              Artikel rekomendasi
+            </Heading>
+            <SimpleGrid columns={{ base: 1, md: 2, lg: 2 }} spacing="6" mt="6">
+              {relatedArticles.map((article) => {
+                return <ArticleCard key={article.slug} {...article} />;
+              })}
+            </SimpleGrid>
           </>
         )}
       </Container>

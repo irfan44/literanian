@@ -1,8 +1,17 @@
+import { InfoIcon } from "@chakra-ui/icons";
 import {
   Box,
   Center,
   Container,
+  Flex,
   Heading,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverHeader,
+  PopoverTrigger,
   SimpleGrid,
   Text,
 } from "@chakra-ui/react";
@@ -26,9 +35,25 @@ const PremiumArticleList = (props: Props) => {
   return (
     <Container maxW="6xl" py="8">
       <Text fontSize="sm" color="blackAlpha.700">
-        Khusus untuk akun premium
+        Khusus untuk akun premium.
       </Text>
-      <Heading mb="6">{props.title}</Heading>
+      <Flex>
+        <Heading mb="6">{props.title}</Heading>
+        <Popover>
+          <PopoverTrigger>
+            <InfoIcon />
+          </PopoverTrigger>
+          <PopoverContent>
+            <PopoverArrow />
+            <PopoverCloseButton />
+            <PopoverHeader>Kumpulkan poin!</PopoverHeader>
+            <PopoverBody>
+              Dapatkan akun premium ketika poinmu mencapai 5, 20, 50, 80, 100,
+              120, 150
+            </PopoverBody>
+          </PopoverContent>
+        </Popover>
+      </Flex>
       {isPremium && (
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing="6">
           {articleData.map((article) => (
