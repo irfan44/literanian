@@ -64,10 +64,10 @@ This project is part of Capstone Project for Generasi Gigih 2.0 from team FE-ED6
 1. Implements Firebase Auth to authenticate user using Google.
 2. Implements Firebase Firestore to store user premium status, premium expiry, and points.
 3. Implements Google Analytics to measure web usage & status.
-3. Implements Redux to store data from firebase auth & firestore as state.
-4. Implements React Router to route user to different pages.
-5. Implements GraphCMS for article management.
-6. Implements GraphQL Request for making GraphQL calls to GraphCMS.
+4. Implements Redux to store data from firebase auth & firestore as state.
+5. Implements React Router to route user to different pages.
+6. Implements GraphCMS for article management.
+7. Implements GraphQL Request for making GraphQL calls to GraphCMS.
 
 ## Getting Started
 
