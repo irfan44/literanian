@@ -23,8 +23,8 @@ const BoostProductivitySection = () => {
         <Image
           src="/images/boost.svg"
           paddingTop={"6%"}
-          w={["100%", "770px"]}
-          h={["380px", "580px"]}
+          w={["100%", "580px"]}
+          h={["380px", "480px"]}
           alt="Ilustrasi Belajar"
         />
       </Center>
