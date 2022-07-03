@@ -43,7 +43,7 @@ This project is part of Capstone Project for Generasi Gigih 2.0 from team FE-ED6
 1. User login/registration using Google account.
 2. Displays a variety of interesting articles to read from different categories.
 3. Display practice questions and quizzes
-4. Collect points when the user answers the quiz correctly.
+4. Collect points when the user answers the quiz.
 5. Unlock premium articles at certain checkpoints (example: at 50, 80, 100, 500, etc).
 
 ### Built With
@@ -51,22 +51,23 @@ This project is part of Capstone Project for Generasi Gigih 2.0 from team FE-ED6
 1. [Create React App](https://create-react-app.dev/) to initialize the project.
 2. Written in [Typescript](https://www.typescriptlang.org/)
 3. [Chakra UI](https://chakra-ui.com/) for building UI
-4. [React Redux](https://react-redux.js.org/) for state management
+4. [Redux Toolkit](https://redux.js.org/) & [React Redux](https://react-redux.js.org/) for state management
 5. [React Router](https://reactrouter.com/) for routing
 6. [GraphCMS](https://www.graphcms.com/) for content management
 7. [GraphQL Request](https://github.com/prisma-labs/graphql-request) for making GraphQL calls to GraphCMS
-8. [Firebase](https://firebase.google.com/) for authentication (Auth) & database (Firestore)
+8. [Firebase](https://firebase.google.com/) for authentication (Auth), database (Firestore), and analytics (Analytics)
 9. [Jest](https://jestjs.io/) for testing
 10. Deployed on [Vercel](https://vercel.com/)
 
 ### Technical Details
 
-1. Implements firebase auth to authenticate user using Google.
-2. Implements firebase firestore to store user premium status, premium expiry, and points.
-3. Implements Redux to store data from firebase auth & firestore as state.
-4. Implements React Router to route user to different pages.
-5. Implements GraphCMS for article management.
-6. Implements GraphQL Request for making GraphQL calls to GraphCMS.
+1. Implements Firebase Auth to authenticate user using Google.
+2. Implements Firebase Firestore to store user premium status, premium expiry, and points.
+3. Implements Google Analytics to measure web usage & status.
+4. Implements Redux to store data from firebase auth & firestore as state.
+5. Implements React Router to route user to different pages.
+6. Implements GraphCMS for article management.
+7. Implements GraphQL Request for making GraphQL calls to GraphCMS.
 
 ## Getting Started
 
